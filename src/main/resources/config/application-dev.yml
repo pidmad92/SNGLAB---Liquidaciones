@@ -33,11 +33,11 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:oracle:thin:@localhost:1521:xe
-        username: system
-        password: oracle
+        url: jdbc:oracle:thin:@mtpedbscan.trabajo.gob.pe:1521/ORAAPOLO
+        username: SIGLABSYS
+        password: SIGLABSYS
     jpa:
-        database-platform: org.hibernate.dialect.Oracle12cDialect
+        database-platform: org.hibernate.dialect.Oracle10gDialect
         database: ORACLE
         show-sql: true
         properties:

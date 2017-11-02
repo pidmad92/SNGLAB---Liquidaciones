@@ -18,6 +18,10 @@
     <!-- more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc -->
     <repositories>
         <repository>
+            <id>datanucleus</id>
+            <url>http://www.datanucleus.org/downloads/maven2</url>
+        </repository>
+        <repository>
             <id>maven.oracle.com</id>
             <name>oracle-maven-repo</name>
             <url>https://maven.oracle.com</url>
@@ -249,9 +253,9 @@
         </dependency>
         <!-- more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc -->
         <dependency>
-            <groupId>com.oracle.jdbc</groupId>
-            <artifactId>ojdbc7</artifactId>
-            <version>${oracle.version}</version>
+            <groupId>oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>

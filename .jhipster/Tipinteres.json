@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "interesperi",
+            "otherEntityName": "interesperi",
+            "otherEntityRelationshipName": "tipinteres"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vNomtipint",
+            "javadoc": "NOMBRE DEL TIPO DE INTERES",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "AUDITORIA USUARIO DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "AUDITORIA FECHA DE REGISTRO",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "AUDITORIA FLAG DE ACTIVO",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "AUDITORIA SEDE DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "AUDITORIA USUARIO DE ACTUALIZACION",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "AUDITORIA FECHA DE ACTUALIZACION",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "AUDITORIA SEDE DE ACTUALIZACION",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013938",
+    "javadoc": "LISTA MAESTRA DE LOS TIPOS DE INTERES (LEGAL O FINANCIERO)",
+    "entityTableName": "tipinteres",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

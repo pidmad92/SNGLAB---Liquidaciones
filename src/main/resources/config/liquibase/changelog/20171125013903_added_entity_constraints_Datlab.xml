@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Datlab.
+    -->
+    <changeSet id="20171125013903-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="empleador_id"
+                                 baseTableName="datlab"
+                                 constraintName="fk_datlab_empleador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="empleador"/>
+
+        <addForeignKeyConstraint baseColumnNames="modcontrato_id"
+                                 baseTableName="datlab"
+                                 constraintName="fk_datlab_modcontrato_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="modcontrato"/>
+
+        <addForeignKeyConstraint baseColumnNames="motcese_id"
+                                 baseTableName="datlab"
+                                 constraintName="fk_datlab_motcese_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="motcese"/>
+
+        <addForeignKeyConstraint baseColumnNames="regimenlab_id"
+                                 baseTableName="datlab"
+                                 constraintName="fk_datlab_regimenlab_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="regimenlab"/>
+
+        <addForeignKeyConstraint baseColumnNames="trabajador_id"
+                                 baseTableName="datlab"
+                                 constraintName="fk_datlab_trabajador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="trabajador"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipvinculo_id"
+                                 baseTableName="datlab"
+                                 constraintName="fk_datlab_tipvinculo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipvinculo"/>
+
+    </changeSet>
+</databaseChangeLog>

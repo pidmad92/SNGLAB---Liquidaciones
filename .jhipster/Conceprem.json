@@ -1,0 +1,105 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "calrcmperi",
+            "otherEntityName": "calrcmperi",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "conceprem",
+            "otherEntityName": "conceprem",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conceprem",
+            "otherEntityName": "conceprem",
+            "otherEntityRelationshipName": "conceprem"
+        },
+        {
+            "relationshipName": "tipcalconre",
+            "otherEntityName": "tipcalconre",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tipconrem",
+            "otherEntityName": "tipconrem",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vNomconrem",
+            "javadoc": "NOMBRE DEL CONCEPTO REMUNERATIVO",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "nValconrem",
+            "javadoc": "VALOR O MONTO DEL CONCEPTO REMUNERATIVO",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "AUDITORIA USUARIO DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "AUDITORIA FECHA DE REGISTRO",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "AUDITORIA FLAG DE ACTIVO",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "AUDITORIA SEDE DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "AUDITORIA USUARIO DE ACTUALIZACION",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "AUDITORIA FECHA DE ACTUALIZACION",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "AUDITORIA SEDE DE ACTUALIZACION",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013931",
+    "javadoc": "LISTA DE CONCEPTOS REMUNERATIVOS PARA UN CALCULO DE RCM",
+    "entityTableName": "conceprem",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

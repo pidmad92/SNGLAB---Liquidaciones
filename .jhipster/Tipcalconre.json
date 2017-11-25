@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conceprem",
+            "otherEntityName": "conceprem",
+            "otherEntityRelationshipName": "tipcalconre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vNomtcal",
+            "javadoc": "NOMBRE DEL TIPO DE CALCULO DE CONCEPTO REMUNERATIVO",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "AUDITORIA USUARIO DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "AUDITORIA FECHA DE REGISTRO",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "AUDITORIA FLAG DE ACTIVO",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "AUDITORIA SEDE DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "AUDITORIA USUARIO DE ACTUALIZACION",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "AUDITORIA FECHA DE ACTUALIZACION",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "AUDITORIA SEDE DE ACTUALIZACION",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013935",
+    "javadoc": "LISTA MAESTRA DE LOS TIPOS DE CALCULO PARA LOS CONCEPTOS REMUNERATIVOS (FIJO, VARIABLE)",
+    "entityTableName": "tipcalconre",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

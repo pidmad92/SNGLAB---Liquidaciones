@@ -1,0 +1,138 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "calbensoc",
+            "otherEntityName": "calbensoc",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "segsalud",
+            "otherEntityName": "segsalud",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "estperical",
+            "otherEntityName": "estperical",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tipcalperi",
+            "otherEntityName": "tipcalperi",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nCalper",
+            "javadoc": "MONTO TOTAL CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nCalper2",
+            "javadoc": "MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nNumper",
+            "javadoc": "NUMERO DE PERIODO EN LA LISTA PARA CALCULO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecini",
+            "javadoc": "FECHA DE INICIO DEL PERIODO",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecfin",
+            "javadoc": "FECHA FIN DEL PERIODO",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nTnocomput",
+            "javadoc": "TIEMPO NO COMPUTABLE",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nDgozados",
+            "javadoc": "EN CASO SE TRATASE DE VACACIONES - NUMERO DE DIAS GOZADOS EN EL PERIODO",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nDadeudos",
+            "javadoc": "EN CASO SE TRATASE DE REMUNERACIONES INSOLUTAS - NUMERO DE DIAS ADEUDOS EN EL PERIODO",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nAnobase",
+            "javadoc": "Aï¿½O BASE EN CASO SEA DEL TIPO DE PERIODO ANUAL (1)",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "AUDITORIA USUARIO DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "AUDITORIA FECHA DE REGISTRO",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "AUDITORIA FLAG DE ACTIVO",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "AUDITORIA SEDE DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "AUDITORIA USUARIO DE ACTUALIZACION",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "AUDITORIA FECHA DE ACTUALIZACION",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "AUDITORIA SEDE DE ACTUALIZACION",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013928",
+    "javadoc": "LISTA RESUMEN DEL CALCULO DE UN BENEFICIO SOCIAL EN UN PERIODO",
+    "entityTableName": "calperiodo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,79 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "calperiodo",
+            "otherEntityName": "calperiodo",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "calrcmperi"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conceprem",
+            "otherEntityName": "conceprem",
+            "otherEntityRelationshipName": "calrcmperi"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nCalrcmper",
+            "javadoc": "MONTO TOTAL CALCULADO DEL RCM DEL BENEFICIO SOCIAL EN EL PERIODO",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "AUDITORIA USUARIO DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "AUDITORIA FECHA DE REGISTRO",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "AUDITORIA FLAG DE ACTIVO",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "AUDITORIA SEDE DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "AUDITORIA USUARIO DE ACTUALIZACION",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "AUDITORIA FECHA DE ACTUALIZACION",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "AUDITORIA SEDE DE ACTUALIZACION",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013930",
+    "javadoc": "LISTA RESUMEN DEL CALCULO DE LA RCM EN UN PERIODO",
+    "entityTableName": "calrcmperi",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,76 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "atencion",
+            "otherEntityName": "atencion",
+            "otherEntityRelationshipName": "tipatencion"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vDestipate",
+            "javadoc": "DESCRIPCION DEL TIPO DE ATENCION.",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013918",
+    "javadoc": "LISTA MAESTRA DE TIPOS DE ATENCION",
+    "entityTableName": "tipatencion",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

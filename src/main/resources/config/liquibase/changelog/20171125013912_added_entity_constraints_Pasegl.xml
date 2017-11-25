@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Pasegl.
+    -->
+    <changeSet id="20171125013912-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="oficina_id"
+                                 baseTableName="pasegl"
+                                 constraintName="fk_pasegl_oficina_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="oficina"/>
+
+        <addForeignKeyConstraint baseColumnNames="atencion_id"
+                                 baseTableName="pasegl"
+                                 constraintName="fk_pasegl_atencion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="atencion"/>
+
+    </changeSet>
+</databaseChangeLog>

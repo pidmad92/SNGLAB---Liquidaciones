@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Atencion.
+    -->
+    <changeSet id="20171125013852-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="liquidacion_id"
+                                 baseTableName="atencion"
+                                 constraintName="fk_atencion_liquidacion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="liquidacion"/>
+
+        <addForeignKeyConstraint baseColumnNames="datlab_id"
+                                 baseTableName="atencion"
+                                 constraintName="fk_atencion_datlab_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="datlab"/>
+
+        <addForeignKeyConstraint baseColumnNames="empleador_id"
+                                 baseTableName="atencion"
+                                 constraintName="fk_atencion_empleador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="empleador"/>
+
+        <addForeignKeyConstraint baseColumnNames="oficina_id"
+                                 baseTableName="atencion"
+                                 constraintName="fk_atencion_oficina_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="oficina"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipatencion_id"
+                                 baseTableName="atencion"
+                                 constraintName="fk_atencion_tipatencion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipatencion"/>
+
+        <addForeignKeyConstraint baseColumnNames="trabajador_id"
+                                 baseTableName="atencion"
+                                 constraintName="fk_atencion_trabajador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="trabajador"/>
+
+    </changeSet>
+</databaseChangeLog>

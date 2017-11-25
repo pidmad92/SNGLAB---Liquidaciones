@@ -1,0 +1,86 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "motateselec",
+            "otherEntityName": "motateselec",
+            "otherEntityRelationshipName": "direcalter"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vRazsocial",
+            "javadoc": "RAZON SOCIAL ALTERNATIVA",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "vDireccion",
+            "javadoc": "DIRECCION DE LA RAZON SOCIAL ALTERNATIVA.",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013915",
+    "javadoc": "LISTA DE RAZON SOCIAL Y DIRECCION ALTERNATIVA PARA DOCUMENTO DE INSPECCION POLICIAL",
+    "entityTableName": "direcalter",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

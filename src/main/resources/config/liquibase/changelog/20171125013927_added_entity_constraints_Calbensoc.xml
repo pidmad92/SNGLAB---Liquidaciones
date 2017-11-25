@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Calbensoc.
+    -->
+    <changeSet id="20171125013927-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="bensocial_id"
+                                 baseTableName="calbensoc"
+                                 constraintName="fk_calbensoc_bensocial_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bensocial"/>
+
+        <addForeignKeyConstraint baseColumnNames="liquidacion_id"
+                                 baseTableName="calbensoc"
+                                 constraintName="fk_calbensoc_liquidacion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="liquidacion"/>
+
+    </changeSet>
+</databaseChangeLog>

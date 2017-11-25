@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Interesperi.
+    -->
+    <changeSet id="20171125013933-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="calperiodo_id"
+                                 baseTableName="interesperi"
+                                 constraintName="fk_interesperi_calperiodo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="calperiodo"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipinteres_id"
+                                 baseTableName="interesperi"
+                                 constraintName="fk_interesperi_tipinteres_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipinteres"/>
+
+    </changeSet>
+</databaseChangeLog>

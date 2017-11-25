@@ -1,0 +1,81 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "pasegl",
+            "otherEntityName": "pasegl",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "motatenofic",
+            "otherEntityName": "motatenofic",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vObsmotpas",
+            "javadoc": "OBSERVACION DEL MOTIVO DE ATENCION DEL PASE.",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 500
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013859",
+    "javadoc": "LISTA DE MOTIVOS REGISTRADOS EN LOS PASES",
+    "entityTableName": "motivpase",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

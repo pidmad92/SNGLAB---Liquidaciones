@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Motateselec.
+    -->
+    <changeSet id="20171125013856-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="atencion_id"
+                                 baseTableName="motateselec"
+                                 constraintName="fk_motateselec_atencion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="atencion"/>
+
+        <addForeignKeyConstraint baseColumnNames="direcalter_id"
+                                 baseTableName="motateselec"
+                                 constraintName="fk_motateselec_direcalter_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="direcalter"/>
+
+        <addForeignKeyConstraint baseColumnNames="motatenofic_id"
+                                 baseTableName="motateselec"
+                                 constraintName="fk_motateselec_motatenofic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="motatenofic"/>
+
+    </changeSet>
+</databaseChangeLog>

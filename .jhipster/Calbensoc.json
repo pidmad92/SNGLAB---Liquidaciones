@@ -1,0 +1,88 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "bensocial",
+            "otherEntityName": "bensocial",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "calperiodo",
+            "otherEntityName": "calperiodo",
+            "otherEntityRelationshipName": "calbensoc"
+        },
+        {
+            "relationshipName": "liquidacion",
+            "otherEntityName": "liquidacion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nCalbens",
+            "javadoc": "MONTO TOTAL CALCULADO DEL BENEFICIO SOCIAL",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nCalbens2",
+            "javadoc": "MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "AUDITORIA USUARIO DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "AUDITORIA FECHA DE REGISTRO",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "AUDITORIA FLAG DE ACTIVO",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "AUDITORIA SEDE DE REGISTRO",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "AUDITORIA USUARIO DE ACTUALIZACION",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "AUDITORIA FECHA DE ACTUALIZACION",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "AUDITORIA SEDE DE ACTUALIZACION",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013927",
+    "javadoc": "LISTA RESUMEN DEL CALCULO DE BENEFICIOS SOCIALES EN UNA LIQUIDACION",
+    "entityTableName": "calbensoc",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

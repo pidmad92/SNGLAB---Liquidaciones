@@ -1,0 +1,86 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "perjuridica",
+            "otherEntityName": "perjuridica",
+            "otherEntityRelationshipName": "actiecon"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "vCiuuaceco",
+            "javadoc": "CLASIFICACION INDUSTRIAL INTERNACIONAL UNIFORME DE LA ACTIVIDAD ECONOMICA.",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 5
+        },
+        {
+            "fieldName": "vDesacteco",
+            "javadoc": "DESCRIPCION DE LA ACTIVIDAD ECONOMICA.",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DE USUARIO QUE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE QUE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "FECHA Y HORA DE LA MODIFICACION DEL REGISTRO.",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013851",
+    "javadoc": "LISTA MAESTRA DE LAS ACTIVIDADES ECONOMICAS",
+    "entityTableName": "actiecon",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

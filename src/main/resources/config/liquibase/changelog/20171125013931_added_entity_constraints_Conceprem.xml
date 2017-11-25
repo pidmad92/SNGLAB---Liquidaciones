@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Conceprem.
+    -->
+    <changeSet id="20171125013931-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="calrcmperi_id"
+                                 baseTableName="conceprem"
+                                 constraintName="fk_conceprem_calrcmperi_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="calrcmperi"/>
+
+        <addForeignKeyConstraint baseColumnNames="conceprem_id"
+                                 baseTableName="conceprem"
+                                 constraintName="fk_conceprem_conceprem_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="conceprem"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipcalconre_id"
+                                 baseTableName="conceprem"
+                                 constraintName="fk_conceprem_tipcalconre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipcalconre"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipconrem_id"
+                                 baseTableName="conceprem"
+                                 constraintName="fk_conceprem_tipconrem_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipconrem"/>
+
+    </changeSet>
+</databaseChangeLog>

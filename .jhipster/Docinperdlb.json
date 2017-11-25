@@ -1,0 +1,72 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "datlab",
+            "otherEntityName": "datlab",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "docingrper",
+            "otherEntityName": "docingrper",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nUsuareg",
+            "javadoc": "CODIGO DEL USUARIO QUE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tFecreg",
+            "javadoc": "FECHA Y HORA DEL REGISTRO.",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nFlgactivo",
+            "javadoc": "ESTADO ACTIVO DEL REGISTRO (1=ACTIVO, 0=INACTIVO)",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nSedereg",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE REGISTRA.",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nUsuaupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tFecupd",
+            "javadoc": "CODIGO DEL USUARIO QUE MODIFICA EL REGISTRO.",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "nSedeupd",
+            "javadoc": "CODIGO DE LA SEDE DONDE SE MODIFICA EL REGISTRO.",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20171125013857",
+    "javadoc": "LISTA DE DOCUMENTOS DE INGRESOS PERCIBIDOS REGISTRADOS EN CADA DATO LABORAL",
+    "entityTableName": "docinperdlb",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

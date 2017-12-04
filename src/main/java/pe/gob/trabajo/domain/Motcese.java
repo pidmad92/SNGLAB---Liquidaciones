@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS MOTIVOS DE CESE")
 @Entity
-@Table(name = "motcese")
+@Table(name = "gltbc_motcese")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "motcese")
+@Document(indexName = "gltbc_motcese")
 public class Motcese implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Motcese implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codmotces", nullable = false)
     private Long id;
 
     /**

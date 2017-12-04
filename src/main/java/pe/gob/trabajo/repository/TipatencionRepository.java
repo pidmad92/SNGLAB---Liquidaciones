@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Tipatencion;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface TipatencionRepository extends JpaRepository<Tipatencion, Long> {
+
+    @Query("select tipatencion from Tipatencion tipatencion where tipatencion.nFlgactivo = true")
+    List<Tipatencion> findAll_Activos();
 
 }

@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS REGIMENES LABORALES")
 @Entity
-@Table(name = "regimenlab")
+@Table(name = "gltbc_regimenlab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "regimenlab")
+@Document(indexName = "gltbc_regimenlab")
 public class Regimenlab implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Regimenlab implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codreglab", nullable = false)
     private Long id;
 
     /**

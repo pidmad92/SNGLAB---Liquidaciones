@@ -113,6 +113,18 @@ public class CartrabResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(cartrab));
     }
 
+    /** JH
+     * GET  /cartrabs : get all the cartrabs.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of cartrabs in body
+     */
+    @GetMapping("/cartrabs/activos")
+    @Timed
+    public List<Cartrab> getAll_Activos() {
+        log.debug("REST request to get all cartrabs");
+        return cartrabRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /cartrabs/:id : delete the "id" cartrab.
      *

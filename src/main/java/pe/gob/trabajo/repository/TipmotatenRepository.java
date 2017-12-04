@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Tipmotaten;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -13,4 +14,7 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface TipmotatenRepository extends JpaRepository<Tipmotaten, Long> {
 
+    @Query("select tipmotaten from Tipmotaten tipmotaten where tipmotaten.nFlgactivo = true")
+    List<Tipmotaten> findAll_Activos();
+    
 }

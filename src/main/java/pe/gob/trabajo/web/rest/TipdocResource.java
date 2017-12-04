@@ -113,6 +113,18 @@ public class TipdocResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipdoc));
     }
 
+    /** JH
+     * GET  /tipdocs : get all the tipdocs.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipdocs in body
+     */
+    @GetMapping("/tipdocs/activos")
+    @Timed
+    public List<Tipdoc> getAll_Activos() {
+        log.debug("REST request to get all tipdocs");
+        return tipdocRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /tipdocs/:id : delete the "id" tipdoc.
      *

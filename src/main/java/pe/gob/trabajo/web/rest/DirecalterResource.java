@@ -113,6 +113,31 @@ public class DirecalterResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(direcalter));
     }
 
+    /** JH
+     * GET  /direcalters : get all the direcalters.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of direcalters in body
+     */
+    @GetMapping("/direcalters/activos")
+    @Timed
+    public List<Direcalter> getAll_Activos() {
+        log.debug("REST request to get all direcalters");
+        return direcalterRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /direcalters/raz_social/:raz_social/
+     * @param raz_social es una Razón Social
+     * @return the ResponseEntity with status 200 (OK) and with body the Direcalter, or with status 404 (Not Found)
+     */
+	@GetMapping("/direcalters/raz_social/{raz_social}")
+    @Timed
+    public String getDireccionAlternativaByRazonSocial(@PathVariable String raz_social) {
+        log.debug("REST request to get Direcalter : id raz_social {}", raz_social);
+        String direcalter = direcalterRepository.findDireccionAlternativaByRazonSocial(raz_social);
+        return direcalter;
+    }
+
     /**
      * DELETE  /direcalters/:id : delete the "id" direcalter.
      *

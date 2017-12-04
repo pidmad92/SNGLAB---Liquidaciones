@@ -21,9 +21,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE LOS DATOS LABORALES QUE RELACIONA A UN EMPLEADOR CON UN TRABAJADOR")
 @Entity
-@Table(name = "datlab")
+@Table(name = "gltbc_datlab")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "datlab")
+@Document(indexName = "gltbc_datlab")
 public class Datlab implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +31,7 @@ public class Datlab implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_coddatlab", nullable = false)
     private Long id;
 
     /**
@@ -126,21 +127,27 @@ public class Datlab implements Serializable {
     private Set<Atencion> atencions = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "n_codemplea")
     private Empleador empleador;
 
     @ManyToOne
+    @JoinColumn(name = "n_codmdcont")
     private Modcontrato modcontrato;
 
     @ManyToOne
+    @JoinColumn(name = "n_codmotces")
     private Motcese motcese;
 
     @ManyToOne
+    @JoinColumn(name = "n_codreglab")
     private Regimenlab regimenlab;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtrab")
     private Trabajador trabajador;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtipvin")
     private Tipvinculo tipvinculo;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

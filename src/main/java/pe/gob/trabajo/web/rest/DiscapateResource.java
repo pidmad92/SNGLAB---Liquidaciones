@@ -113,6 +113,30 @@ public class DiscapateResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(discapate));
     }
 
+    /** JH
+     * GET  /discapates : get all the discapates.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of discapates in body
+     */
+    @GetMapping("/discapates/activos")
+    @Timed
+    public List<Discapate> getAll_Activos() {
+        log.debug("REST request to get all discapates");
+        return discapateRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /discapates/atencion/id/:id_aten : 
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the Dirpernat, or with status 404 (Not Found)
+     */
+	@GetMapping("/discapates/atencion/id/{id_aten}")
+    @Timed
+    public List<Discapate> getListDiscapateById_Atencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get discapates : id_aten {}", id_aten);
+        return discapateRepository.findListDiscapateById_Atencion(id_aten);
+    }
+
     /**
      * DELETE  /discapates/:id : delete the "id" discapate.
      *

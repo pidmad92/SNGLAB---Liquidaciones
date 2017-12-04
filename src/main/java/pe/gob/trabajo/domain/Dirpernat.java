@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE LAS DIRECCIONES DE LAS PERSONAS NATURALES")
 @Entity
-@Table(name = "dirpernat")
+@Table(name = "glmvd_dirpernat")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "dirpernat")
+@Document(indexName = "glmvd_dirpernat")
 public class Dirpernat implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +27,7 @@ public class Dirpernat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codpnadir", nullable = false)
     private Long id;
 
     /**
@@ -129,6 +130,7 @@ public class Dirpernat implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codpernat")
     private Pernatural pernatural;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

@@ -113,6 +113,18 @@ public class TipmotatenResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipmotaten));
     }
 
+    /** JH
+     * GET  /tipmotatens : get all the tipmotatens.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipmotatens in body
+     */
+    @GetMapping("/tipmotatens/activos")
+    @Timed
+    public List<Tipmotaten> getAll_Activos() {
+        log.debug("REST request to get all tipmotatens");
+        return tipmotatenRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /tipmotatens/:id : delete the "id" tipmotaten.
      *

@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS ESTADOS PARA EL PERIODO")
 @Entity
-@Table(name = "estperical")
+@Table(name = "litbc_estperical")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "estperical")
+@Document(indexName = "litbc_estperical")
 public class Estperical implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Estperical implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codestper", nullable = false)
     private Long id;
 
     /**

@@ -113,6 +113,63 @@ public class TrabajadorResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(trabajador));
     }
 
+    /** JH
+     * GET  /trabajadors : get all the trabajadors.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of trabajadors in body
+     */
+    @GetMapping("/trabajadors/activos")
+    @Timed
+    public List<Trabajador> getAll_Activos() {
+        log.debug("REST request to get all trabajadors");
+        return trabajadorRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /trabajador/tipdoc/:id_tdoc/numdoc/:ndoc : get the "tdoc" Tipo de documento de identidad del trabajador
+     *  y "ndoc" Número de documento de identidad del trabajador.
+     * @param id_tdoc es el id del tipo de documento de identidad del trabajador
+     * @param ndoc el numero de documento de identidad del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the trabajador, or with status 404 (Not Found)
+     */
+	@GetMapping("/trabajadors/tipdoc/{id_tdoc}/numdoc/{ndoc}")
+    @Timed
+    public ResponseEntity<Trabajador> getTrabajadorByIdentDoc(@PathVariable Long id_tdoc, @PathVariable String ndoc) {
+        log.debug("REST request to get Trabajador : tipdoc {} - numdoc {}", id_tdoc, ndoc);
+        Trabajador trabajador = trabajadorRepository.findTrabajadorByIdentDoc(id_tdoc,ndoc);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(trabajador));
+    }
+
+     /** JH
+     * GET  /trabajadores/tipdoc/:id_tdoc/numdoc/:ndoc : get the "tdoc" Tipo de documento de identidad del trabajador
+     *  y "ndoc" Número de documento de identidad del trabajador.
+     * @param id_tdoc es el id del tipo de documento de identidad del trabajador
+     * @param ndoc el numero de documento de identidad (V_NUMDOCUMENTO), del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the trabajador, or with status 404 (Not Found)
+     */
+	@GetMapping("/trabajadors/tipdoc/{id_tdoc}/numdocs/{ndoc}")
+    @Timed
+    public List<Trabajador> getListTrabajadorByIdentDoc(@PathVariable Long id_tdoc, @PathVariable String ndoc) {
+        log.debug("REST request to get Trabajador : tipdoc {} - numdoc {}", id_tdoc, ndoc);
+        return trabajadorRepository.findListTrabajadorByIdentDoc(id_tdoc,ndoc);
+    }
+
+     /** JH
+     * GET  /trabajadores/nombres/:nombres/apellidopat/:apepat/apellidomat/:apemat 
+     *  
+     * @param nombres es el nombre del trabajador
+     * @param apepat el apellido paterno del trabajador
+     * @param apemat el apellido materno del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the trabajador, or with status 404 (Not Found)
+     */
+    @GetMapping("/trabajadors/nombres/{nombres}/apellidopat/{apepat}/apellidomat/{apemat}")
+    @Timed
+    public List<Trabajador> getTrabajadoresbyName(@PathVariable String nombres, @PathVariable String apepat, @PathVariable String apemat) {
+        log.debug("REST request to get Trabajador : nombres {} - apellidopat {} - apellidomat {}", nombres, apepat, apemat);
+        return trabajadorRepository.findListTrabajadorByName(nombres,apepat,apemat);
+         
+    }
+
     /**
      * DELETE  /trabajadors/:id : delete the "id" trabajador.
      *

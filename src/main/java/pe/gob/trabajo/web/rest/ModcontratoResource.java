@@ -113,6 +113,18 @@ public class ModcontratoResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(modcontrato));
     }
 
+    /** JH
+     * GET  /modcontratoes : get all the modcontratoes.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of modcontratoes in body
+     */
+    @GetMapping("/modcontratoes/activos")
+    @Timed
+    public List<Modcontrato> getAll_Activos() {
+        log.debug("REST request to get all modcontratoes");
+        return modcontratoRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /modcontratoes/:id : delete the "id" modcontrato.
      *

@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS TIPOS DE CONCEPTOS REMUNERATIVOS (FIJO, VARIABLE)")
 @Entity
-@Table(name = "tipconrem")
+@Table(name = "litbc_tipconrem")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "tipconrem")
+@Document(indexName = "litbc_tipconrem")
 public class Tipconrem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Tipconrem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codtipcr", nullable = false)
     private Long id;
 
     /**

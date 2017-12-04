@@ -113,6 +113,31 @@ public class SucesorResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(sucesor));
     }
 
+    /** JH
+     * GET  /sucesors : get all the sucesors.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of sucesors in body
+     */
+    @GetMapping("/sucesors/activos")
+    @Timed
+    public List<Sucesor> getAll_Activos() {
+        log.debug("REST request to get all sucesors");
+        return sucesorRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /sucesors/trabajador/id/:id_trab : 
+     * @param id_trab es el id del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the Sucesor, or with status 404 (Not Found)
+     */
+	@GetMapping("/sucesors/trabajador/id/{id_trab}")
+    @Timed
+    public ResponseEntity<Sucesor> getSucesorBy_IdTrabajador(@PathVariable Long id_trab) {
+        log.debug("REST request to get Sucesor : id_trab {}", id_trab);
+        Sucesor sucesor = sucesorRepository.findSucesorBy_IdTrabajador(id_trab);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(sucesor));
+    }
+
     /**
      * DELETE  /sucesors/:id : delete the "id" sucesor.
      *

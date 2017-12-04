@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Actiecon;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface ActieconRepository extends JpaRepository<Actiecon, Long> {
+
+    @Query("select actiecon from Actiecon actiecon where actiecon.nFlgactivo = true")
+    List<Actiecon> findAll_Activos();
 
 }

@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Motcese;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface MotceseRepository extends JpaRepository<Motcese, Long> {
+
+    @Query("select motcese from Motcese motcese where motcese.nFlgactivo = true")
+    List<Motcese> findAll_Activos();
 
 }

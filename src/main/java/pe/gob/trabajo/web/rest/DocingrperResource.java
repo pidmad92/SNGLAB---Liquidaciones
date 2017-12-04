@@ -113,6 +113,18 @@ public class DocingrperResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(docingrper));
     }
 
+    /** JH
+     * GET  /docingrpers : get all the docingrpers.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of docingrpers in body
+     */
+    @GetMapping("/docingrpers/activos")
+    @Timed
+    public List<Docingrper> getAll_Activos() {
+        log.debug("REST request to get all docingrpers");
+        return docingrperRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /docingrpers/:id : delete the "id" docingrper.
      *

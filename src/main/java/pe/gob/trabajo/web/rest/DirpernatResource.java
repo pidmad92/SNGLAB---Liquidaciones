@@ -113,6 +113,30 @@ public class DirpernatResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(dirpernat));
     }
 
+    /** JH
+     * GET  /dirpernats : get all the dirpernats.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of dirpernats in body
+     */
+    @GetMapping("/dirpernats/activos")
+    @Timed
+    public List<Dirpernat> getAll_Activos() {
+        log.debug("REST request to get all dirpernats");
+        return dirpernatRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /dirpernat/trabajador/id/:id_trab : get the "id_trab" Id del Trabajador
+     * @param id_trab es el id del Trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the Dirpernat, or with status 404 (Not Found)
+     */
+	@GetMapping("/dirpernats/trabajador/id/{id_trab}")
+    @Timed
+    public List<Dirpernat> getListDireccionesTrabajadorById(@PathVariable Long id_trab) {
+        log.debug("REST request to get Dirpernat : id_trab {}", id_trab);
+        return dirpernatRepository.findListDireccionesTrabajadorById(id_trab);
+    }
+
     /**
      * DELETE  /dirpernats/:id : delete the "id" dirpernat.
      *

@@ -18,9 +18,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA RESUMEN DEL CALCULO DEL INTERES EN UN PERIODO")
 @Entity
-@Table(name = "interesperi")
+@Table(name = "limvc_interesperi")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "interesperi")
+@Document(indexName = "limvc_interesperi")
 public class Interesperi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,6 +28,7 @@ public class Interesperi implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codintper", nullable = false)
     private Long id;
 
     /**
@@ -95,6 +96,7 @@ public class Interesperi implements Serializable {
     private Calperiodo calperiodo;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtipint")
     private Tipinteres tipinteres;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

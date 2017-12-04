@@ -113,6 +113,18 @@ public class AccionadopResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(accionadop));
     }
 
+    /** JH
+     * GET  /accionadops : get all the accionadops.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of accionadops in body
+     */
+    @GetMapping("/accionadops/activos")
+    @Timed
+    public List<Accionadop> getAll_Activos() {
+        log.debug("REST request to get all accionadops");
+        return accionadopRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /accionadops/:id : delete the "id" accionadop.
      *

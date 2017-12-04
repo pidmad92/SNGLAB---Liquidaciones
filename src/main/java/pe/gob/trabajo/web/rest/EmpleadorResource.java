@@ -113,6 +113,49 @@ public class EmpleadorResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(empleador));
     }
 
+    /** JH
+     * GET  /empleadors : get all the empleadors.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of empleadors in body
+     */
+    @GetMapping("/empleadors/activos")
+    @Timed
+    public List<Empleador> getAll_Activos() {
+        log.debug("REST request to get all empleadors");
+        return empleadorRepository.findAll_Activos();
+    }
+
+    /** JH
+     * GET  /empleadors/razsocial/:razsocial : lista los empleadores por razon social.
+     * @param razsocial es la razon social del empleador
+     * @return the ResponseEntity with status 200 (OK) and the list of empleadors in body
+     */
+    @GetMapping("/empleadors/razsocial/{razsocial}")
+    @Timed
+    public List<Empleador> geEmpleadordByRazsocial(@PathVariable String razsocial) {
+        log.debug("REST request to get empleadors: razsocial {}");
+        return empleadorRepository.findEmpleadordByRazsocial(razsocial);
+    }
+
+     /** JH
+     * GET  /empleador/tipdoc/:id_tdoc/numdoc/:ndoc : get the "tdoc" Tipo de documento de identidad del empleador
+     *  y "ndoc" Número de documento de identidad del empleador.
+     * @param id_tdoc es el id del tipo de documento de identidad del empleador
+     * @param ndoc el numero de documento de identidad del empleador
+     * @return the ResponseEntity with status 200 (OK) and with body the empleador, or with status 404 (Not Found)
+     */
+	@GetMapping("/empleadors/tipdoc/{id_tdoc}/numdoc/{ndoc}")
+    @Timed
+    public ResponseEntity<Empleador> getEmpleadorbyNumdoc(@PathVariable Long id_tdoc, @PathVariable String ndoc) {
+        log.debug("REST request to get empleador : tipdoc {} - numdoc {}", id_tdoc, ndoc);
+        Empleador empleador = new Empleador();
+        empleador = empleadorRepository.findEmpleadorPerJuridByIdentDoc(id_tdoc,ndoc);
+        if (empleador.equals(null)){
+            empleador = empleadorRepository.findEmpleadorPerNaturalByIdentDoc(id_tdoc,ndoc);
+        }
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(empleador));
+    }
+
     /**
      * DELETE  /empleadors/:id : delete the "id" empleador.
      *

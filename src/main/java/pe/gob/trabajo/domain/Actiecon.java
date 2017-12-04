@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LAS ACTIVIDADES ECONOMICAS")
 @Entity
-@Table(name = "actiecon")
+@Table(name = "gltbc_actiecon")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "actiecon")
+@Document(indexName = "gltbc_actiecon")
 public class Actiecon implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Actiecon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codacteco", nullable = false)
     private Long id;
 
     /**

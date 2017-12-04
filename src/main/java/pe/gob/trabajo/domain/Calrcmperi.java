@@ -21,9 +21,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA RESUMEN DEL CALCULO DE LA RCM EN UN PERIODO")
 @Entity
-@Table(name = "calrcmperi")
+@Table(name = "limvc_calrcmperi")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "calrcmperi")
+@Document(indexName = "limvc_calrcmperi")
 public class Calrcmperi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +31,7 @@ public class Calrcmperi implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codcalrcm", nullable = false)
     private Long id;
 
     /**

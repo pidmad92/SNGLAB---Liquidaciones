@@ -21,9 +21,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA RESUMEN DEL CALCULO DE BENEFICIOS SOCIALES EN UNA LIQUIDACION")
 @Entity
-@Table(name = "calbensoc")
+@Table(name = "limvc_calbensoc")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "calbensoc")
+@Document(indexName = "limvc_calbensoc")
 public class Calbensoc implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +31,7 @@ public class Calbensoc implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codcalbs", nullable = false)
     private Long id;
 
     /**
@@ -101,6 +102,7 @@ public class Calbensoc implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codbensoc")
     private Bensocial bensocial;
 
     @OneToMany(mappedBy = "calbensoc")
@@ -109,6 +111,7 @@ public class Calbensoc implements Serializable {
     private Set<Calperiodo> calperiodos = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "n_codliq")
     private Liquidacion liquidacion;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

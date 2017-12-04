@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS MOTIVOS DE LA ATENCION")
 @Entity
-@Table(name = "motate")
+@Table(name = "gltbc_motate")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "motate")
+@Document(indexName = "gltbc_motate")
 public class Motate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Motate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codmotate", nullable = false)
     private Long id;
 
     /**
@@ -100,6 +101,7 @@ public class Motate implements Serializable {
     private Set<Motatenofic> motatenofics = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "n_codtipmot")
     private Tipmotaten tipmotaten;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

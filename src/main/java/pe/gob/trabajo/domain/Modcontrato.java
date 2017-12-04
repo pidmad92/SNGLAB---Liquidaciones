@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE MODALIDADES DE CONTRATO")
 @Entity
-@Table(name = "modcontrato")
+@Table(name = "gltbc_modcontrato")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "modcontrato")
+@Document(indexName = "gltbc_modcontrato")
 public class Modcontrato implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Modcontrato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codmdcont", nullable = false)
     private Long id;
 
     /**

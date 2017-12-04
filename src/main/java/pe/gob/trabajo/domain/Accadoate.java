@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE ACCIONES ADOPTADAS POR CADA ATENCION")
 @Entity
-@Table(name = "accadoate")
+@Table(name = "glmvd_accadoate")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "accadoate")
+@Document(indexName = "glmvd_accadoate")
 public class Accadoate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +27,7 @@ public class Accadoate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codatacad", nullable = false)
     private Long id;
 
     /**
@@ -83,9 +84,11 @@ public class Accadoate implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codaten")
     private Atencion atencion;
 
     @ManyToOne
+    @JoinColumn(name = "n_codacadop")
     private Accionadop accionadop;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

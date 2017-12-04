@@ -113,6 +113,33 @@ public class PerjuridicaResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(perjuridica));
     }
 
+    /** JH
+     * GET  /perjuridicas : get all the perjuridicas.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of perjuridicas in body
+     */
+    @GetMapping("/perjuridicas/activos")
+    @Timed
+    public List<Perjuridica> getAll_Activos() {
+        log.debug("REST request to get all perjuridicas");
+        return perjuridicaRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /perjuridicas/tipdoc/:id_tdoc/numdoc/:ndoc : get the "tdoc" Tipo de documento de identidad de la persona juridica
+     *  y "ndoc" Número de documento de identidad de la persona juridica.
+     * @param id_tdoc es el id del tipo de documento de identidad de la persona juridica
+     * @param ndoc el numero de documento de identidad de la persona juridica
+     * @return the ResponseEntity with status 200 (OK) and with body the perjuridica, or with status 404 (Not Found)
+     */
+	@GetMapping("/perjuridicas/tipdoc/{id_tdoc}/numdoc/{ndoc}")
+    @Timed
+    public ResponseEntity<Perjuridica> getPersonajuridByIdentDoc(@PathVariable Long id_tdoc, @PathVariable String ndoc) {
+        log.debug("REST request to get Perjuridica : tipdoc {} - numdoc {}", id_tdoc, ndoc);
+        Perjuridica perjuridica = perjuridicaRepository.findPersonajuridByIdentDoc(id_tdoc,ndoc);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(perjuridica));
+    }
+
     /**
      * DELETE  /perjuridicas/:id : delete the "id" perjuridica.
      *

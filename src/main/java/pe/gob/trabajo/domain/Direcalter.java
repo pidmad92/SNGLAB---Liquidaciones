@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE RAZON SOCIAL Y DIRECCION ALTERNATIVA PARA DOCUMENTO DE INSPECCION POLICIAL")
 @Entity
-@Table(name = "direcalter")
+@Table(name = "gltbc_direcalter")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "direcalter")
+@Document(indexName = "gltbc_direcalter")
 public class Direcalter implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Direcalter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_coddalter", nullable = false)
     private Long id;
 
     /**

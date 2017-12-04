@@ -113,6 +113,18 @@ public class RegimenlabResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(regimenlab));
     }
 
+    /** JH
+     * GET  /regimenlabs : get all the regimenlabs.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of regimenlabs in body
+     */
+    @GetMapping("/regimenlabs/activos")
+    @Timed
+    public List<Regimenlab> getAll_Activos() {
+        log.debug("REST request to get all regimenlabs");
+        return regimenlabRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /regimenlabs/:id : delete the "id" regimenlab.
      *

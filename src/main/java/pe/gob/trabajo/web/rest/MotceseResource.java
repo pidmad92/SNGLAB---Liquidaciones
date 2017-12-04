@@ -113,6 +113,18 @@ public class MotceseResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(motcese));
     }
 
+    /** JH
+     * GET  /motcese : get all the motcese.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of motcese in body
+     */
+    @GetMapping("/motcese/activos")
+    @Timed
+    public List<Motcese> getAll_Activos() {
+        log.debug("REST request to get all motcese");
+        return motceseRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /motcese/:id : delete the "id" motcese.
      *

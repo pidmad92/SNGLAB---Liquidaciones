@@ -113,6 +113,54 @@ public class AtencionResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(atencion));
     }
 
+    /** JH
+     * GET  /atencions : get all the atencions.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of atencions in body
+     */
+    @GetMapping("/atencions/activos")
+    @Timed
+    public List<Atencion> getAll_Activos() {
+        log.debug("REST request to get all atencions");
+        return atencionRepository.findAll_Activos();
+        }
+
+     /** JH
+     * GET  /atencions/empleador/id/:id_emple/
+     * @param id_emple es el id del empleador
+     * @return the ResponseEntity with status 200 (OK) and with body the atencion, or with status 404 (Not Found)
+     */
+	@GetMapping("/atencions/empleador/id/{id_emple}")
+    @Timed
+    public List<Atencion> getListAtencionByIdEmpleador(@PathVariable Long id_emple) {
+        log.debug("REST request to get Trabajador : id_emple empleador {}", id_emple);
+        return atencionRepository.findListAtencionByIdEmpleador(id_emple);
+    }
+
+     /** JH
+     * GET  /atencions/trabajador/id/:id_trab/
+     * @param id_trab es el id del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the atencion, or with status 404 (Not Found)
+     */
+	@GetMapping("/atencions/trabajador/id/{id_trab}")
+    @Timed
+    public List<Atencion> getListAtencionByIdTrabajador(@PathVariable Long id_trab) {
+        log.debug("REST request to get Trabajador : id trabajador {}", id_trab);
+        return atencionRepository.findListAtencionByIdTrabajador(id_trab);
+    }
+
+     /** JH
+     * GET  /atencions/atenpase/trabajador/id/:id_trab/
+     * @param id_trab es el id del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the atencion, or with status 404 (Not Found)
+     */
+	@GetMapping("/atencions/atenpase/trabajador/id/{id_trab}")
+    @Timed
+    public List<Atencion> getfindListAtenPase_ByIdTrabajador(@PathVariable Long id_trab) {
+        log.debug("REST request to get Trabajador : id trabajador {}", id_trab);
+        return atencionRepository.findListAtenPase_ByIdTrabajador(id_trab);
+    }
+
     /**
      * DELETE  /atencions/:id : delete the "id" atencion.
      *

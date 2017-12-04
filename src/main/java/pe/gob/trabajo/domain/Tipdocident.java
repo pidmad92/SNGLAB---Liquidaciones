@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE TIPOS DE DOCUMENTOS DE IDENTIDAD")
 @Entity
-@Table(name = "tipdocident")
+@Table(name = "gltbc_tipdocident")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "tipdocident")
+@Document(indexName = "gltbc_tipdocident")
 public class Tipdocident implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Tipdocident implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codtdiden", nullable = false)
     private Long id;
 
     /**

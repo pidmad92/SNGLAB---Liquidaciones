@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE DOCUMENTOS QUE EL TRABAJADOR O EMPLEADOR PUEDEN PRESENTAR AL MOMENTO DE LA ATENCION")
 @Entity
-@Table(name = "documento")
+@Table(name = "gltbc_documento")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "documento")
+@Document(indexName = "gltbc_documento")
 public class Documento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Documento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_coddoc", nullable = false)
     private Long id;
 
     /**
@@ -100,6 +101,7 @@ public class Documento implements Serializable {
     private Set<Docpresate> docpresates = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "n_codtipdoc")
     private Tipdoc tipdoc;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS TIPOS DE MOTIVOS DE ATENCION")
 @Entity
-@Table(name = "tipmotaten")
+@Table(name = "gltbc_tipmotaten")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "tipmotaten")
+@Document(indexName = "gltbc_tipmotaten")
 public class Tipmotaten implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Tipmotaten implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codtipmot", nullable = false)
     private Long id;
 
     /**

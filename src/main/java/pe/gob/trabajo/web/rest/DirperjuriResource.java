@@ -113,6 +113,30 @@ public class DirperjuriResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(dirperjuri));
     }
 
+    /** JH
+     * GET  /dirperjuris : get all the dirperjuris.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of dirperjuris in body
+     */
+    @GetMapping("/dirperjuris/activos")
+    @Timed
+    public List<Dirperjuri> getAll_Activos() {
+        log.debug("REST request to get all dirperjuris");
+        return dirperjuriRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /dirperjuri/empleador/id/:id_empl : 
+     * @param id_empl es el id del Empleador
+     * @return the ResponseEntity with status 200 (OK) and with body the dirperjuri, or with status 404 (Not Found)
+     */
+	@GetMapping("/dirperjuris/empleador/id/{id_empl}")
+    @Timed
+    public List<Dirperjuri> getListDireccionesEmpleadorById(@PathVariable Long id_empl) {
+        log.debug("REST request to get Perjuridire : id_empl {}", id_empl);
+        return dirperjuriRepository.findListDireccionesEmpleadorById(id_empl);
+    }
+
     /**
      * DELETE  /dirperjuris/:id : delete the "id" dirperjuri.
      *

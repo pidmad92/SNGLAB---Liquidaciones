@@ -113,6 +113,30 @@ public class MotivpaseResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(motivpase));
     }
 
+    /** JH
+     * GET  /motivpases : get all the motivpases.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of motivpases in body
+     */
+    @GetMapping("/motivpases/activos")
+    @Timed
+    public List<Motivpase> getAll_Activos() {
+        log.debug("REST request to get all motivpases");
+        return motivpaseRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /motatenofic/atencion/id/:id_pase :
+     * @param id_pase es el id del Pasegl
+     * @return the ResponseEntity with status 200 (OK) and with body the MotivPase, or with status 404 (Not Found)
+     */
+	@GetMapping("/motivpases/pasegl/id/{id_pase}")
+    @Timed
+    public List<Motivpase> getListMotivPaseById_Pasegl(@PathVariable Long id_pase) {
+        log.debug("REST request to get MotivPase : id_pase {}", id_pase);
+        return motivpaseRepository.findListMotivPaseById_Pasegl(id_pase);
+    }
+
     /**
      * DELETE  /motivpases/:id : delete the "id" motivpase.
      *

@@ -113,6 +113,18 @@ public class ActieconResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(actiecon));
     }
 
+    /** JH
+     * GET  /actiecons : get all the actiecons.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of actiecons in body
+     */
+    @GetMapping("/actiecons/activos")
+    @Timed
+    public List<Actiecon> getAll_Activos() {
+        log.debug("REST request to get all actiecons");
+        return actieconRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /actiecons/:id : delete the "id" actiecon.
      *

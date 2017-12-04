@@ -21,9 +21,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA RESUMEN DE LA LIQUIDACION EN UNA ATENCION")
 @Entity
-@Table(name = "liquidacion")
+@Table(name = "limvc_liquidacion")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "liquidacion")
+@Document(indexName = "limvc_liquidacion")
 public class Liquidacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +31,7 @@ public class Liquidacion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codliq", nullable = false)
     private Long id;
 
     /**

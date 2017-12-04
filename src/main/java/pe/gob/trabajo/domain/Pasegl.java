@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE PASES GENERADOS POR LAS ATENCIONES")
 @Entity
-@Table(name = "pasegl")
+@Table(name = "gltbc_pasegl")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "pasegl")
+@Document(indexName = "gltbc_pasegl")
 public class Pasegl implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Pasegl implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codpase", nullable = false)
     private Long id;
 
     /**
@@ -103,10 +104,12 @@ public class Pasegl implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codofic")
     private Oficina oficina;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    //@JsonIgnore
+    @JoinColumn(unique = true, name = "n_codaten")
     private Atencion atencion;
 
     @OneToMany(mappedBy = "pasegl")

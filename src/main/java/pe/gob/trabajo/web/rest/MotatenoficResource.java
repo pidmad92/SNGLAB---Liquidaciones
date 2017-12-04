@@ -113,6 +113,30 @@ public class MotatenoficResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(motatenofic));
     }
 
+    /** JH
+     * GET  /motatenofics : get all the motatenofics.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of motatenofics in body
+     */
+    @GetMapping("/motatenofics/activos")
+    @Timed
+    public List<Motatenofic> getAll_Activos() {
+        log.debug("REST request to get all motatenofics");
+        return motatenoficRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /motatenofic/oficina/id/:id_ofic :
+     * @param id_ofic es el id de la oficina actual
+     * @return the ResponseEntity with status 200 (OK) and with body the motatenofic, or with status 404 (Not Found)
+     */
+	@GetMapping("/motatenofics/oficina/id/{id_ofic}")
+    @Timed
+    public List<Motatenofic> getListMotivosAtencionById_Oficina(@PathVariable Long id_ofic) {
+        log.debug("REST request to get Trabajador : id_ofic {}", id_ofic);
+        return motatenoficRepository.findListMotivosAtencionById_Oficina(id_ofic);
+    }
+
     /**
      * DELETE  /motatenofics/:id : delete the "id" motatenofic.
      *

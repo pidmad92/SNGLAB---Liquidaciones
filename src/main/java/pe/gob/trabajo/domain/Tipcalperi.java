@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS TIPOS DE CALCULO PARA LOS PERIODOS (MENSUAL, SEMESTRAL, ANUAL)")
 @Entity
-@Table(name = "tipcalperi")
+@Table(name = "litbc_tipcalperi")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "tipcalperi")
+@Document(indexName = "litbc_tipcalperi")
 public class Tipcalperi implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Tipcalperi implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codtipcal", nullable = false)
     private Long id;
 
     /**

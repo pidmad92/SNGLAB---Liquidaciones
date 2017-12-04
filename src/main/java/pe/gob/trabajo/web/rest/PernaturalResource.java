@@ -113,6 +113,46 @@ public class PernaturalResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(pernatural));
     }
 
+    /** JH
+     * GET  /pernaturals : get all the pernaturals.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of pernaturals in body
+     */
+    @GetMapping("/pernaturals/activos")
+    @Timed
+    public List<Pernatural> getAll_Activos() {
+        log.debug("REST request to get all pernaturals");
+        return pernaturalRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /pernatural/tipdoc/:id_tdoc/numdoc/:ndoc : get the "id_tdoc" Tipo de documento de identidad de la persona natural
+     *  y "ndoc" Número de documento de identidad de la persona natural.
+     * @param id_tdoc es el id del tipo de documento de identidad de la persona natural
+     * @param ndoc el numero de documento de identidad de la persona natural
+     * @return the ResponseEntity with status 200 (OK) and with body the pernatural, or with status 404 (Not Found)
+     */
+	@GetMapping("/pernaturals/tipdoc/{id_tdoc}/numdoc/{ndoc}")
+    @Timed
+    public ResponseEntity<Pernatural> getPersonanaturByIdentDoc(@PathVariable Long id_tdoc, @PathVariable String ndoc) {
+        log.debug("REST request to get Pernatural : tipdoc {} - numdoc {}", id_tdoc, ndoc);
+        Pernatural pernatural = pernaturalRepository.findpersonanaturByIdentDoc(id_tdoc,ndoc);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(pernatural));
+    }
+
+     /** JH
+     * GET  /pernaturals/id/:id_per/nomcompleto
+     * @param id_per es id de la persona Natural
+     * @return the ResponseEntity with status 200 (OK) and with body the pernatural, or with status 404 (Not Found)
+     */
+	@GetMapping("/pernaturals/id/{id_per}/nomcompleto")
+    @Timed
+    public String getNomCompleto_PernaturalById(@PathVariable Long id_per) {
+        log.debug("REST request to get Nombre Completo : id_per {}", id_per);
+        String nomcompleto = pernaturalRepository.findNomCompleto_PernaturalById(id_per);
+        return nomcompleto;
+    }
+
     /**
      * DELETE  /pernaturals/:id : delete the "id" pernatural.
      *

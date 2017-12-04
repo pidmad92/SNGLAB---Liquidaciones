@@ -113,6 +113,30 @@ public class MotateselecResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(motateselec));
     }
 
+    /** JH
+     * GET  /motateselecs : get all the motateselecs.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of motateselecs in body
+     */
+    @GetMapping("/motateselecs/activos")
+    @Timed
+    public List<Motateselec> getAll_Activos() {
+        log.debug("REST request to get all motateselecs");
+        return motateselecRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /motatenofic/atencion/id/:id_aten :
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the Motateselec, or with status 404 (Not Found)
+     */
+	@GetMapping("/motateselecs/atencion/id/{id_aten}")
+    @Timed
+    public List<Motateselec> getListMotateselecById_Atencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get Motateselec : id_aten {}", id_aten);
+        return motateselecRepository.findListMotateselecById_Atencion(id_aten);
+    }
+
     /**
      * DELETE  /motateselecs/:id : delete the "id" motateselec.
      *

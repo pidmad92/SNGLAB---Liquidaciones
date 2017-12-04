@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE TRABAJADORES")
 @Entity
-@Table(name = "trabajador")
+@Table(name = "gltbc_trabajador")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "trabajador")
+@Document(indexName = "gltbc_trabajador")
 public class Trabajador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Trabajador implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codtrab", nullable = false)
     private Long id;
 
     /**
@@ -94,9 +95,11 @@ public class Trabajador implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codcartra")
     private Cartrab cartrab;
 
     @ManyToOne
+    @JoinColumn(name = "n_codpernat")
     private Pernatural pernatural;
 
     @OneToMany(mappedBy = "trabajador")

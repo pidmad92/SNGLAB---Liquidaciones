@@ -21,9 +21,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE CONCEPTOS REMUNERATIVOS PARA UN CALCULO DE RCM")
 @Entity
-@Table(name = "conceprem")
+@Table(name = "limvc_conceprem")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "conceprem")
+@Document(indexName = "limvc_conceprem")
 public class Conceprem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +31,7 @@ public class Conceprem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codconrem", nullable = false)
     private Long id;
 
     /**
@@ -103,9 +104,11 @@ public class Conceprem implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codcalrcm")
     private Calrcmperi calrcmperi;
 
     @ManyToOne
+    // @JoinColumn(name = "n_codconrem")
     private Conceprem conceprem;
 
     @OneToMany(mappedBy = "conceprem")
@@ -114,9 +117,11 @@ public class Conceprem implements Serializable {
     private Set<Conceprem> conceprems = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "n_codtcal")
     private Tipcalconre tipcalconre;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtipcr")
     private Tipconrem tipconrem;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

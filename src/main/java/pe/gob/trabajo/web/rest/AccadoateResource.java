@@ -113,6 +113,30 @@ public class AccadoateResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(accadoate));
     }
 
+    /** JH
+     * GET  /accadoates : get all the accadoates.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of accadoates in body
+     */
+    @GetMapping("/accadoates/activos")
+    @Timed
+    public List<Accadoate> getAll_Activos() {
+        log.debug("REST request to get all Accadoates");
+        return accadoateRepository.findAll_Activos();
+        }
+
+     /** JH
+     * GET  /accadoate/atencion/id_aten/:id_aten
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the accadoate, or with status 404 (Not Found)
+     */
+	@GetMapping("/accadoates/atencion/id_aten/{id_aten}")
+    @Timed
+    public List<Accadoate> getListAccionesAdoptadasById_Atencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get Atenaccadop : id_aten {} ", id_aten);
+        return accadoateRepository.findListAccionesAdoptadasById_Atencion(id_aten);
+    }
+
     /**
      * DELETE  /accadoates/:id : delete the "id" accadoate.
      *

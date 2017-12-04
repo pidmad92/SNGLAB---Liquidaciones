@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE LOS MOTIVOS DE ATENCION POR CADA OFICINA")
 @Entity
-@Table(name = "motatenofic")
+@Table(name = "gltbd_motatenofic")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "motatenofic")
+@Document(indexName = "gltbd_motatenofic")
 public class Motatenofic implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Motatenofic implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codmtatof", nullable = false)
     private Long id;
 
     /**
@@ -86,9 +87,11 @@ public class Motatenofic implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codmotate")
     private Motate motate;
 
     @ManyToOne
+    @JoinColumn(name = "n_codofic")
     private Oficina oficina;
 
     @OneToMany(mappedBy = "motatenofic")

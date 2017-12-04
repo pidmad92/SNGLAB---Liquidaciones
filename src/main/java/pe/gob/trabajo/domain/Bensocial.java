@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE BENEFICIOS SOCIALES")
 @Entity
-@Table(name = "bensocial")
+@Table(name = "litbc_bensocial")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "bensocial")
+@Document(indexName = "litbc_bensocial")
 public class Bensocial implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Bensocial implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codbensoc", nullable = false)
     private Long id;
 
     /**

@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE DOCUMENTOS DE INGRESOS PERCIBIDOS REGISTRADOS EN CADA DATO LABORAL")
 @Entity
-@Table(name = "docinperdlb")
+@Table(name = "glmvd_docinperdlb")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "docinperdlb")
+@Document(indexName = "glmvd_docinperdlb")
 public class Docinperdlb implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +27,7 @@ public class Docinperdlb implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_coddipedl", nullable = false)
     private Long id;
 
     /**
@@ -83,9 +84,11 @@ public class Docinperdlb implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_coddatlab")
     private Datlab datlab;
 
     @ManyToOne
+    @JoinColumn(name = "n_coddinper")
     private Docingrper docingrper;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

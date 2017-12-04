@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Tipdocident;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface TipdocidentRepository extends JpaRepository<Tipdocident, Long> {
+
+    @Query("select tipdocident from Tipdocident tipdocident where tipdocident.nFlgactivo = true")
+    List<Tipdocident> findAll_Activos();
 
 }

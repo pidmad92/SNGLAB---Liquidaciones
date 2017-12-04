@@ -113,6 +113,18 @@ public class TipdocidentResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipdocident));
     }
 
+    /** JH
+     * GET  /tipdocidents : get all the tipdocidents.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipdocidents in body
+     */
+    @GetMapping("/tipdocidents/activos")
+    @Timed
+    public List<Tipdocident> getAll_Activos() {
+        log.debug("REST request to get all tipdocidents");
+        return tipdocidentRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /tipdocidents/:id : delete the "id" tipdocident.
      *

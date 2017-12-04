@@ -113,6 +113,18 @@ public class TipvinculoResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipvinculo));
     }
 
+    /** JH
+     * GET  /tipvinculos : get all the tipvinculos.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipvinculos in body
+     */
+    @GetMapping("/tipvinculos/activos")
+    @Timed
+    public List<Tipvinculo> getAll_Activos() {
+        log.debug("REST request to get all tipvinculos");
+        return tipvinculoRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /tipvinculos/:id : delete the "id" tipvinculo.
      *

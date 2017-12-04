@@ -113,6 +113,18 @@ public class TipatencionResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipatencion));
     }
 
+    /** JH
+     * GET  /tipatencions : get all the tipatencions.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipatencions in body
+     */
+    @GetMapping("/tipatencions/activos")
+    @Timed
+    public List<Tipatencion> getAll_Activos() {
+        log.debug("REST request to get all tipatencions");
+        return tipatencionRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /tipatencions/:id : delete the "id" tipatencion.
      *

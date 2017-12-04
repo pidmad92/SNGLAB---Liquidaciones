@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE ATENCIONES A LOS TRABAJADORES Y/O EMPLEADORES")
 @Entity
-@Table(name = "atencion")
+@Table(name = "glmvc_atencion")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "atencion")
+@Document(indexName = "glmvc_atencion")
 public class Atencion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Atencion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codaten", nullable = false)
     private Long id;
 
     /**
@@ -147,18 +148,23 @@ public class Atencion implements Serializable {
     private Set<Motateselec> motateselecs = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "n_coddatlab")
     private Datlab datlab;
 
     @ManyToOne
+    @JoinColumn(name = "n_codemplea")
     private Empleador empleador;
 
     @ManyToOne
+    @JoinColumn(name = "n_codofic")
     private Oficina oficina;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtipate")
     private Tipatencion tipatencion;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtrab")
     private Trabajador trabajador;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

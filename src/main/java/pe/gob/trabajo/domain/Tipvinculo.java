@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE LOS TIPOS DE VINCULO LABORAL PARA  LOS DATOS LABORALES")
 @Entity
-@Table(name = "tipvinculo")
+@Table(name = "gltbc_tipvinculo")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "tipvinculo")
+@Document(indexName = "gltbc_tipvinculo")
 public class Tipvinculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Tipvinculo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codtipvin", nullable = false)
     private Long id;
 
     /**

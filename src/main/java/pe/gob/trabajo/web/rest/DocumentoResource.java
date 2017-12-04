@@ -113,6 +113,18 @@ public class DocumentoResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(documento));
     }
 
+    /** JH
+     * GET  /documentos : get all the documentos.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of documentos in body
+     */
+    @GetMapping("/documentos/activos")
+    @Timed
+    public List<Documento> getAll_Activos() {
+        log.debug("REST request to get all documentos");
+        return documentoRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /documentos/:id : delete the "id" documento.
      *

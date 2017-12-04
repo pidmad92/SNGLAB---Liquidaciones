@@ -113,6 +113,30 @@ public class DocpresateResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(docpresate));
     }
 
+    /** JH
+     * GET  /docpresates : get all the docpresates.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of docpresates in body
+     */
+    @GetMapping("/docpresates/activos")
+    @Timed
+    public List<Docpresate> getAll_Activos() {
+        log.debug("REST request to get all docpresates");
+        return docpresateRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /docpresates/atencion/id/:id_aten :
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the Docpresate, or with status 404 (Not Found)
+     */
+	@GetMapping("/docpresates/atencion/id/{id_aten}")
+    @Timed
+    public List<Docpresate> getListDocpresentaByIdAtencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get Docpresate : id_aten {}", id_aten);
+        return docpresateRepository.findListDocPresentaById_Atencion(id_aten);
+    }
+
     /**
      * DELETE  /docpresates/:id : delete the "id" docpresate.
      *

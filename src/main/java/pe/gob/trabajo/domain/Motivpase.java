@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE MOTIVOS REGISTRADOS EN LOS PASES")
 @Entity
-@Table(name = "motivpase")
+@Table(name = "glmvd_motivpase")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "motivpase")
+@Document(indexName = "glmvd_motivpase")
 public class Motivpase implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +27,7 @@ public class Motivpase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codmotpas", nullable = false)
     private Long id;
 
     /**
@@ -91,9 +92,11 @@ public class Motivpase implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codpase")
     private Pasegl pasegl;
 
     @ManyToOne
+    @JoinColumn(name = "n_codmtatof")
     private Motatenofic motatenofic;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

@@ -113,6 +113,18 @@ public class OficinaResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(oficina));
     }
 
+    /** JH
+     * GET  /oficinas : get all the oficinas.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of oficinas in body
+     */
+    @GetMapping("/oficinas/activos")
+    @Timed
+    public List<Oficina> getAll_Activos() {
+        log.debug("REST request to get all oficinas");
+        return oficinaRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /oficinas/:id : delete the "id" oficina.
      *

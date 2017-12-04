@@ -113,6 +113,30 @@ public class DocinperdlbResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(docinperdlb));
     }
 
+    /** JH
+     * GET  /docinperdlbs : get all the docinperdlbs.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of docinperdlbs in body
+     */
+    @GetMapping("/docinperdlbs/activos")
+    @Timed
+    public List<Docinperdlb> getAll_Activos() {
+        log.debug("REST request to get all docinperdlbs");
+        return docinperdlbRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /docinperdlbs/atencion/id/:id_aten : Documento de ingresos percibidos registrado en una atencion
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the Docinperdlb, or with status 404 (Not Found)
+     */
+	@GetMapping("/docinperdlbs/atencion/id/{id_aten}")
+    @Timed
+    public List<Docinperdlb> getListDocinperdlbById_Atencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get docinperdlbs : id_aten {}", id_aten);
+        return docinperdlbRepository.findListDocinperdlbById_Atencion(id_aten);
+    }
+
     /**
      * DELETE  /docinperdlbs/:id : delete the "id" docinperdlb.
      *

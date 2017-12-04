@@ -113,6 +113,43 @@ public class DatlabResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(datlab));
     }
 
+    /** JH
+     * GET  /datlabs : get all the datlabs.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of datlabs in body
+     */
+    @GetMapping("/datlabs/activos")
+    @Timed
+    public List<Datlab> getAll_Activos() {
+        log.debug("REST request to get all datlabs");
+        return datlabRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /datlab/id_trabajador/:id_trab :
+     * @param id_trab es el id del tipo de documento de identidad del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the datlab, or with status 404 (Not Found)
+     */
+	@GetMapping("/datlabs/id_trabajador/{id_trab}")
+    @Timed
+    public List<Datlab> getListDatlaboralByIdTrabajador(@PathVariable Long id_trab) {
+        log.debug("REST request to get Trabajador : id_trab {}", id_trab);
+        return datlabRepository.findListDatlaboralByIdTrabajador(id_trab);
+    }
+
+     /** JH
+     * GET  /datlab/id_trabajador/:id_trab/id_empelador/:id_empl :
+     * @param id_trab es el id del trabajador
+     * @param id_empl es el id del empleador 
+     * @return the ResponseEntity with status 200 (OK) and with body the datlab, or with status 404 (Not Found)
+     */
+	@GetMapping("/datlabs/id_trabajador/{id_trab}/id_empleador/{id_empl}")
+    @Timed
+    public List<Datlab> getListDatlaboralBy_IdTrabajador_IdEmpleador(@PathVariable Long id_trab, @PathVariable Long id_empl) {
+        log.debug("REST request to get Trabajador : id_trab {} - id_empl {}", id_trab,id_empl);
+        return datlabRepository.findListDatlaboralBy_IdTrabajador_IdEmpleador(id_trab,id_empl);
+    }
+
     /**
      * DELETE  /datlabs/:id : delete the "id" datlab.
      *

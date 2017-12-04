@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Documento;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface DocumentoRepository extends JpaRepository<Documento, Long> {
+
+    @Query("select documento from Documento documento where documento.nFlgactivo = true")
+    List<Documento> findAll_Activos();
 
 }

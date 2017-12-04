@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE DISCAPACIDADES REGISTRADAS EN LAS ATENCIONES")
 @Entity
-@Table(name = "discapate")
+@Table(name = "glmvd_discapate")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "discapate")
+@Document(indexName = "glmvd_discapate")
 public class Discapate implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +27,7 @@ public class Discapate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_coddiscat", nullable = false)
     private Long id;
 
     /**
@@ -83,9 +84,11 @@ public class Discapate implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codaten")
     private Atencion atencion;
 
     @ManyToOne
+    @JoinColumn(name = "n_coddiscap")
     private Discap discap;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

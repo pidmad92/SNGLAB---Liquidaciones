@@ -17,9 +17,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA DE SUCESORES DE TRABAJADORES")
 @Entity
-@Table(name = "sucesor")
+@Table(name = "gltbc_sucesor")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "sucesor")
+@Document(indexName = "gltbc_sucesor")
 public class Sucesor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,6 +27,7 @@ public class Sucesor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_codsuces", nullable = false)
     private Long id;
 
     /**
@@ -101,9 +102,11 @@ public class Sucesor implements Serializable {
     private Integer nSedeupd;
 
     @ManyToOne
+    @JoinColumn(name = "n_codpernat")
     private Pernatural pernatural;
 
     @ManyToOne
+    @JoinColumn(name = "n_codtrab")
     private Trabajador trabajador;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove

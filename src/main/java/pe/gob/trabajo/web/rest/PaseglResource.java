@@ -113,6 +113,44 @@ public class PaseglResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(pasegl));
     }
 
+     /** JH
+     * GET  /pasegls/pases/trabajador/:id_trab/oficina/:id_ofic/estado/:vEstado
+     * @param id_trab es el id del Trabajador
+     * @param id_ofic es el id de la Oficina que Atiende el pase
+     * @param vEstado es el estado del pase
+     * @return the ResponseEntity with status 200 (OK) and with body the pasegl, or with status 404 (Not Found)
+     */
+	@GetMapping("/pasegls/pases/trabajador/{id_trab}/oficina/{id_ofic}/estado/{vEstado}")
+    @Timed
+    public List<Pasegl> getPasegl_Pendientes_By_IdTrabajador_IdOficina(@PathVariable Long id_trab,@PathVariable Long id_ofic, @PathVariable String vEstado) {
+        log.debug("REST request to get pasegls : id_trab {} - id_ofic {}", id_trab, id_ofic, vEstado);
+        return paseglRepository.findPasegl_Pendientes_By_IdTrabajador_IdOficina(id_trab, id_ofic, vEstado);
+    }
+
+    /** JH
+     * GET  /pasegls : get all the pasegls.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of pasegls in body
+     */
+    @GetMapping("/pasegls/activos")
+    @Timed
+    public List<Pasegl> getAll_Activos() {
+        log.debug("REST request to get all pasegls");
+        return paseglRepository.findAll_Activos();
+    }
+
+     /** JH
+     * GET  /pasegls/pase/id/:id_pase/ : get the "id_pase" 
+     * @param id_pase es el id del Pasegl
+     * @return the ResponseEntity with status 200 (OK) and with body the Pasegl, or with status 404 (Not Found)
+     */
+	@GetMapping("/pasegls/pase/id/{id_pase}")
+    @Timed
+    public List<Pasegl> getPaseglById(@PathVariable Long id_pase) {
+        log.debug("REST request to get Pasegl : id_pase {} ", id_pase);
+        return paseglRepository.findPaseglById(id_pase);
+    }
+
     /**
      * DELETE  /pasegls/:id : delete the "id" pasegl.
      *

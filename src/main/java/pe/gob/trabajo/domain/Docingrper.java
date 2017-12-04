@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 @ApiModel(description = "LISTA MAESTRA DE DOCUMENTOS DE INGRESOS PERCIBIDOS PARA REGISTRO DE DATOS LABORALES")
 @Entity
-@Table(name = "docingrper")
+@Table(name = "gltbc_docingrper")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "docingrper")
+@Document(indexName = "gltbc_docingrper")
 public class Docingrper implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +30,7 @@ public class Docingrper implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
+    @Column(name = "n_coddinper", nullable = false)
     private Long id;
 
     /**

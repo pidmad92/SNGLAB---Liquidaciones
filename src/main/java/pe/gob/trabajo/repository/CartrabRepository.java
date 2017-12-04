@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Cartrab;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface CartrabRepository extends JpaRepository<Cartrab, Long> {
+
+    @Query("select cartrab from Cartrab cartrab where cartrab.nFlgactivo = true")
+    List<Cartrab> findAll_Activos();
 
 }

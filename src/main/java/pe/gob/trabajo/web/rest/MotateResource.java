@@ -113,6 +113,18 @@ public class MotateResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(motate));
     }
 
+    /** JH
+     * GET  /motates : get all the motates.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of motates in body
+     */
+    @GetMapping("/motates/activos")
+    @Timed
+    public List<Motate> getAll_Activos() {
+        log.debug("REST request to get all motates");
+        return motateRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /motates/:id : delete the "id" motate.
      *

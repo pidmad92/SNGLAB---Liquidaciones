@@ -113,6 +113,18 @@ public class DiscapResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(discap));
     }
 
+    /** JH
+     * GET  /discaps : get all the discaps.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of discaps in body
+     */
+    @GetMapping("/discaps/activos")
+    @Timed
+    public List<Discap> getAll_Activos() {
+        log.debug("REST request to get all discaps");
+        return discapRepository.findAll_Activos();
+    }
+
     /**
      * DELETE  /discaps/:id : delete the "id" discap.
      *

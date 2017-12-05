@@ -53,6 +53,8 @@
     <!--<include file="config/liquibase/changelog/20171125013936_added_entity_Tipcalperi.xml" relativeToChangelogFile="false"/>
     <!--<include file="config/liquibase/changelog/20171125013937_added_entity_Tipconrem.xml" relativeToChangelogFile="false"/>
     <!--<include file="config/liquibase/changelog/20171125013938_added_entity_Tipinteres.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171205211459_added_entity_Bancos.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171205211500_added_entity_Moneda.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!--<include file="config/liquibase/changelog/20171125013852_added_entity_constraints_Atencion.xml" relativeToChangelogFile="false"/>
     <!--<include file="config/liquibase/changelog/20171125013854_added_entity_constraints_Accadoate.xml" relativeToChangelogFile="false"/>

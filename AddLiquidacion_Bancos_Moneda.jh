@@ -1,0 +1,22 @@
+entity Bancos {
+	vNombanco String required maxlength(200),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+
+entity Moneda {
+	vNommoneda String required maxlength(100),
+    nUsuareg Integer required,
+    tFecreg Instant required,
+    nFlgactivo Boolean required,
+    nSedereg Integer required,
+    nUsuaupd Integer,
+    tFecupd Instant,
+    nSedeupd Integer
+}
+

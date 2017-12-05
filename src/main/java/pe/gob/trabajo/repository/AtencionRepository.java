@@ -40,9 +40,9 @@ public interface AtencionRepository extends JpaRepository<Atencion, Long> {
     // "from Atencion as atencion inner join Pasegl as pasegl on atencion.id=pasegl.atencion.id "+
     // "where (atencion.trabajador.id=?1 or atencion.datlab.trabajador.id=?1)  and atencion.nFlgactivo=true order by atencion.tFecreg desc")
     @Query("select new map(atencion as aten " + 
-    ", (select motateselec from Motateselec motateselec where motateselec.atencion.id=atencion.id) as motivoaten " + 
+    //", (select motateselec from Motateselec motateselec where motateselec.atencion.id=atencion.id) as motivoaten " + 
     ", (select pasegl from Pasegl pasegl where pasegl.atencion.id=atencion.id) as pase " +
-    ", (select motivpase from Motivpase motivpase where motivpase.pasegl.atencion.id=atencion.id) as motivopase " +
+    //", (select motivpase from Motivpase motivpase where motivpase.pasegl.atencion.id=atencion.id) as motivopase " +
     " ) "+
     "from Atencion atencion "+
     "where  atencion.trabajador.id=?1 or atencion.datlab.trabajador.id=?1 and atencion.nFlgactivo=true order by atencion.tFecreg desc")

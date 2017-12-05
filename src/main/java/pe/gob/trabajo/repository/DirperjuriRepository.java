@@ -24,8 +24,14 @@ public interface DirperjuriRepository extends JpaRepository<Dirperjuri, Long> {
     @Query("select dirperjuri from Dirperjuri dirperjuri where dirperjuri.nFlgactivo = true")
     List<Dirperjuri> findAll_Activos();
 
-    @Query("select dirperjuri from Dirperjuri dirperjuri right join Empleador empleador on dirperjuri.perjuridica.id=empleador.perjuridica.id  where empleador.id=?1 and dirperjuri.nFlgactivo = true")
-    // @Query("select new map((select dep.vDesdep from Departamento dep where dep.vCoddep=dirperjuri.nCoddepto) as dpto, (select provin.vDespro from Provincia provin where provin.vCodpro=dirperjuri.nCodprov) as prov, (select distri.vDesdis from Distrito distri where provin.vCoddis=dirperjuri.nCoddist) as dist, dirperjuri as direc) from Dirperjuri dirperjuri right join Empleador empleador on dirperjuri.perjuridica.id=empleador.perjuridica.id  where empleador.id=?1 and dirperjuri.nFlgactivo = true")
+    @Query("select new map( " +
+    "(select dep.vDesdep from Departamento dep where dep.vCoddep=dirperjuri.nCoddepto) as dpto "+
+    ", (select provin.vDespro from Provincia provin where provin.vCodpro=dirperjuri.nCodprov and provin.vCoddep=dirperjuri.nCoddepto) as prov " +
+    ", (select distri.vDesdis from Distrito distri where distri.vCoddis=dirperjuri.nCoddist and distri.vCodpro=dirperjuri.nCodprov and distri.vCoddep=dirperjuri.nCoddepto) as dist" +
+    ", dirperjuri as direc "+
+    ")"+
+    " from Dirperjuri dirperjuri right join Empleador empleador on dirperjuri.perjuridica.id=empleador.perjuridica.id  " + 
+    " where empleador.id=?1 and dirperjuri.nFlgactivo = true")
     List<Dirperjuri> findListDireccionesEmpleadorById(Long id);
 
 }

@@ -150,6 +150,14 @@ public class Datlab implements Serializable {
     @JoinColumn(name = "n_codtipvin")
     private Tipvinculo tipvinculo;
 
+    @ManyToOne
+    @JoinColumn(name = "n_codbanco")
+    private Bancos bancos;
+
+    @ManyToOne
+    @JoinColumn(name = "n_codmoneda")
+    private Moneda moneda;
+
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -429,6 +437,33 @@ public class Datlab implements Serializable {
     public void setTipvinculo(Tipvinculo tipvinculo) {
         this.tipvinculo = tipvinculo;
     }
+
+    public Bancos getBancos() {
+        return bancos;
+    }
+
+    public Datlab bancos(Bancos bancos) {
+        this.bancos = bancos;
+        return this;
+    }
+
+    public void setBancos(Bancos bancos) {
+        this.bancos = bancos;
+    }
+
+    public Moneda getMoneda() {
+        return moneda;
+    }
+
+    public Datlab moneda(Moneda moneda) {
+        this.moneda = moneda;
+        return this;
+    }
+
+    public void setMoneda(Moneda moneda) {
+        this.moneda = moneda;
+    }
+
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
     @Override

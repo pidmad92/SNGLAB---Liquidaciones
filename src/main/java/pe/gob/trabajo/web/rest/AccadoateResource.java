@@ -137,6 +137,18 @@ public class AccadoateResource {
         return accadoateRepository.findListAccionesAdoptadasById_Atencion(id_aten);
     }
 
+     /** JH
+     * GET  /accadoate/atencion/id_aten/:id_aten
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the accadoate, or with status 404 (Not Found)
+     */
+	@GetMapping("/accadoates/seleccion/atencion/id_aten/{id_aten}")
+    @Timed
+    public List<Accadoate> getListAccionadop_ySeleccionadosByIdAtencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get Atenaccadop : id_aten {} ", id_aten);
+        return accadoateRepository.findListAccionadop_ySeleccionadosByIdAtencion(id_aten);
+    }
+
     /**
      * DELETE  /accadoates/:id : delete the "id" accadoate.
      *

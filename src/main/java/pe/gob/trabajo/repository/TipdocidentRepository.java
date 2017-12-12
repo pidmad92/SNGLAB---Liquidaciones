@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface TipdocidentRepository extends JpaRepository<Tipdocident, Long> {
 
-    @Query("select tipdocident from Tipdocident tipdocident where tipdocident.nFlgactivo = true")
+    @Query("select tipdocident from Tipdocident tipdocident where tipdocident.nFlgactivo = true order by tipdocident.id")
     List<Tipdocident> findAll_Activos();
 
 }

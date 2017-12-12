@@ -113,6 +113,18 @@ public class TipconremResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipconrem));
     }
 
+    /** JH
+     * GET  /tipconrems/activos : get all the tipconrems.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipconrems in body
+     */
+    @GetMapping("/tipconrems/activos")
+    @Timed
+    public List<Tipconrem> getAll_Activos() {
+        log.debug("REST request to get all tipconrems");
+        return tipconremRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /tipconrems/:id : delete the "id" tipconrem.
      *

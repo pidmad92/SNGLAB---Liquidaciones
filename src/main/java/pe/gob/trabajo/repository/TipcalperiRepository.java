@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Tipcalperi;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface TipcalperiRepository extends JpaRepository<Tipcalperi, Long> {
+
+    @Query("select tipcalperi from Tipcalperi tipcalperi where tipcalperi.nFlgactivo = true")
+    List<Tipcalperi> findAll_Activos();
 
 }

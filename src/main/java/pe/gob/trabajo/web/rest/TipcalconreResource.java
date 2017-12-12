@@ -113,6 +113,18 @@ public class TipcalconreResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipcalconre));
     }
 
+    /** JH
+     * GET  /tipcalconres/activos : get all the tipcalconres.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipcalconres in body
+     */
+    @GetMapping("/tipcalconres/activos")
+    @Timed
+    public List<Tipcalconre> getAll_Activos() {
+        log.debug("REST request to get all tipcalconres");
+        return tipcalconreRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /tipcalconres/:id : delete the "id" tipcalconre.
      *

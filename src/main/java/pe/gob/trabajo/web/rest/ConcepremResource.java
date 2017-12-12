@@ -113,6 +113,44 @@ public class ConcepremResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(conceprem));
     }
 
+    /** JH
+     * GET  /conceprems/activos : get all the conceprems.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of conceprems in body
+     */
+    @GetMapping("/conceprems/activos")
+    @Timed
+    public List<Conceprem> getAll_Activos() {
+        log.debug("REST request to get all conceprems");
+        return concepremRepository.findAll_Activos();
+        }
+
+    /** JH
+     * GET  /conceprems/id_atencion/{id_aten}/id_bensocial/{id_bsoc} : get all the conceprems.
+     * @param id_aten es el id de la Atencion
+     * @param id_bsoc es el id del Bensocial
+     * @return the ResponseEntity with status 200 (OK) and the list of conceprems in body
+     */
+    @GetMapping("/conceprems/id_calperiodo/{id_calper}")
+    @Timed
+    public List<Conceprem> getListCalperiodo_By_IdAtencion_IdBiensocial(@PathVariable Long id_calper) {
+        log.debug("REST request to get all conceprems: id_calper {}",id_calper);
+        return concepremRepository.findListConceprem_ByIdCalperiodo(id_calper);
+    }
+
+    /** JH
+     * GET /conceprems/id_conceprem/:id_concep/id_tipcalconre/:id_tipccr : get all the conceprems.
+     * @param id_concep es el id del Concepto Remunerativo
+     * @param id_tipccr es el id del Tipo de Calculo de Concepto Remunerativo
+     * @return the ResponseEntity with status 200 (OK) and the list of conceprems in body
+     */
+    @GetMapping("/conceprems/id_conceprem/{id_concep}/id_tipcalconre/{id_tipccr}")
+    @Timed
+    public List<Conceprem> getListConcepremHijo_ByIdPadreIdTipo(@PathVariable Long id_concep, @PathVariable Long id_tipccr) {
+        log.debug("REST request to get all conceprems: id_concep {}, id_tipcalconre",id_concep,id_tipccr);
+        return concepremRepository.findListConcepremHijo_ByIdPadreIdTipo(id_concep, id_tipccr);
+    }
+
     /**
      * DELETE  /conceprems/:id : delete the "id" conceprem.
      *

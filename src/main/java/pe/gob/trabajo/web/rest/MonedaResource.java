@@ -114,6 +114,18 @@ public class MonedaResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(moneda));
     }
 
+    /** JH
+     * GET  /monedas/activos : get all the monedas.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of monedas in body
+     */
+    @GetMapping("/monedas/activos")
+    @Timed
+    public List<Moneda> getAll_Activos() {
+        log.debug("REST request to get all monedas");
+        return monedaRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /monedas/:id : delete the "id" moneda.
      *

@@ -150,6 +150,31 @@ public class DatlabResource {
         return datlabRepository.findListDatlaboralBy_IdTrabajador_IdEmpleador(id_trab,id_empl);
     }
 
+     /** JH
+     * GET  /datlab/registros/id_trabajador/:id_trab :
+     * @param id_trab es el id del tipo de documento de identidad del trabajador
+     * @return the ResponseEntity with status 200 (OK) and with body the datlab, or with status 404 (Not Found)
+     */
+	@GetMapping("/datlabs/registros/id_trabajador/{id_trab}")
+    @Timed
+    public List<Datlab> getListDatLab_UltAtencion_ByIdTrabajador(@PathVariable Long id_trab) {
+        log.debug("REST request to get DatLab : id_trab {}", id_trab);
+        return datlabRepository.findListDatLab_UltAtencion_ByIdTrabajador(id_trab);
+    }
+
+     /** JH
+     * GET  /datlabs/atencion/id_aten/:id_aten :
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the datlab, or with status 404 (Not Found)
+     */
+    @GetMapping("/datlabs/atencion/id_aten/{id_aten}")
+    @Timed
+    public ResponseEntity<Datlab> getDatlaboralByIdAtencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get Datlab : id_aten {}", id_aten);
+        Datlab datlab = datlabRepository.findDatlaboralByIdAtencion(id_aten);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(datlab));
+    }
+
     /**
      * DELETE  /datlabs/:id : delete the "id" datlab.
      *

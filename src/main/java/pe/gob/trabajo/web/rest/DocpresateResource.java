@@ -137,6 +137,18 @@ public class DocpresateResource {
         return docpresateRepository.findListDocPresentaById_Atencion(id_aten);
     }
 
+     /** JH
+     * GET  /docpresates/atencion/id_aten/:id_aten
+     * @param id_aten es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the docpresates, or with status 404 (Not Found)
+     */
+	@GetMapping("/docpresates/seleccion/atencion/id_aten/{id_aten}")
+    @Timed
+    public List<Docpresate> getListDocumento_ySeleccionadosByIdAtencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get Atenaccadop : id_aten {} ", id_aten);
+        return docpresateRepository.findListDocumento_ySeleccionadosByIdAtencion(id_aten);
+    }
+
     /**
      * DELETE  /docpresates/:id : delete the "id" docpresate.
      *

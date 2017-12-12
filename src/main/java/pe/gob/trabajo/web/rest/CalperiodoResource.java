@@ -113,6 +113,44 @@ public class CalperiodoResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(calperiodo));
     }
 
+    /** JH
+     * GET  /calperiodos/activos : get all the calperiodos.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
+     */
+    @GetMapping("/calperiodos/activos")
+    @Timed
+    public List<Calperiodo> getAll_Activos() {
+        log.debug("REST request to get all calperiodos");
+        return calperiodoRepository.findAll_Activos();
+        }
+
+    /** JH
+     * GET  /calperiodos/id_atencion/{id_aten}/id_bensocial/{id_bsoc} : get all the calperiodos.
+     * @param id_aten es el id de la Atencion
+     * @param id_bsoc es el id del Bensocial
+     * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
+     */
+    @GetMapping("/calperiodos/id_atencion/{id_aten}/id_bensocial/{id_bsoc}")
+    @Timed
+    public List<Calperiodo> getListCalperiodo_By_IdAtencion_IdBiensocial(@PathVariable Long id_aten, @PathVariable Long id_bsoc) {
+        log.debug("REST request to get all calperiodos: id_aten {}, id_bsoc {}",id_aten,id_bsoc);
+        return calperiodoRepository.findListCalperiodo_By_IdAtencion_IdBiensocial(id_aten, id_bsoc);
+    }
+
+    /** JH
+     * GET  /calperiodos/depositos/intereses/id_atencion/{id_aten}/id_bensocial/{id_bsoc} .
+     * @param id_aten es el id de la Atencion
+     * @param id_bsoc es el id del Bensocial
+     * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
+     */
+    @GetMapping("/calperiodos/depositos/intereses/id_atencion/{id_aten}/id_bensocial/{id_bsoc}")
+    @Timed
+    public List<Calperiodo> getTotalDeposito_Interes_By_IdAtencion_IdBiensocial(@PathVariable Long id_aten, @PathVariable Long id_bsoc) {
+        log.debug("REST request to get all calperiodos: id_aten {}, id_bsoc {}",id_aten,id_bsoc);
+        return calperiodoRepository.findTotalDeposito_Interes_By_IdAtencion_IdBiensocial(id_aten, id_bsoc);
+    }
+
     /**
      * DELETE  /calperiodos/:id : delete the "id" calperiodo.
      *

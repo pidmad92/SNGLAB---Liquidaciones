@@ -113,6 +113,31 @@ public class InteresperiResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(interesperi));
     }
 
+    /** JH
+     * GET  /interesperis/activos : get all the interesperis.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of interesperis in body
+     */
+    @GetMapping("/interesperis/activos")
+    @Timed
+    public List<Interesperi> getAll_Activos() {
+        log.debug("REST request to get all interesperis");
+        return interesperiRepository.findAll_Activos();
+    }
+
+    /** JH
+     * GET  /interesperis/id_calper/:id_calper : get all the interesperis.
+     * @param id_calper es el id del Calperiodo
+     * @return the ResponseEntity with status 200 (OK) and the list of interesperis in body
+     */
+    @GetMapping("/interesperis/id_calper/{id_calper}")
+    @Timed
+    public ResponseEntity<Interesperi> getInteresperiByIdCalperiodo(@PathVariable Long id_calper) {
+        log.debug("REST request to get Interesperi : id_calper {}", id_calper);
+        Interesperi interesperi = interesperiRepository.findInteresperiByIdCalperiodo(id_calper);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(interesperi));
+    }
+
     /**
      * DELETE  /interesperis/:id : delete the "id" interesperi.
      *

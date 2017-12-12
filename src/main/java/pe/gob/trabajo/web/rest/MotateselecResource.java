@@ -137,6 +137,19 @@ public class MotateselecResource {
         return motateselecRepository.findListMotateselecById_Atencion(id_aten);
     }
 
+     /** JH
+     * GET  /motateselecs/seleccion/id_atencion/:id_aten/id_oficina/:id_ofi
+     * @param id_aten es el id de la atencion
+     * @param id_ofi es el id de la oficina
+     * @return the ResponseEntity with status 200 (OK) and with body the motateselecs, or with status 404 (Not Found)
+     */
+	@GetMapping("/motateselecs/seleccion/id_atencion/{id_aten}/id_oficina/{id_ofi}")
+    @Timed
+    public List<Motateselec> getListMotateselecByIdOfic_IdAtencion(@PathVariable Long id_aten, @PathVariable Long id_ofi) {
+        log.debug("REST request to get Motateselec : id_aten {} id_ofi {} ", id_aten, id_ofi);
+        return motateselecRepository.findListMotateselecByIdOfic_IdAtencion(id_aten, id_ofi);
+    }
+
     /**
      * DELETE  /motateselecs/:id : delete the "id" motateselec.
      *

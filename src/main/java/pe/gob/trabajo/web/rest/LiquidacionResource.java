@@ -113,6 +113,18 @@ public class LiquidacionResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(liquidacion));
     }
 
+    /** JH
+     * GET  /liquidacions/activos : get all the liquidacions.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of liquidacions in body
+     */
+    @GetMapping("/liquidacions/activos")
+    @Timed
+    public List<Liquidacion> getAll_Activos() {
+        log.debug("REST request to get all liquidacions");
+        return liquidacionRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /liquidacions/:id : delete the "id" liquidacion.
      *

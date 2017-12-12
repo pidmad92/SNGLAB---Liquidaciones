@@ -113,6 +113,18 @@ public class CalrcmperiResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(calrcmperi));
     }
 
+    /** JH
+     * GET  /calrcmperis/activos : get all the calrcmperis.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of calrcmperis in body
+     */
+    @GetMapping("/calrcmperis/activos")
+    @Timed
+    public List<Calrcmperi> getAll_Activos() {
+        log.debug("REST request to get all calrcmperis");
+        return calrcmperiRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /calrcmperis/:id : delete the "id" calrcmperi.
      *

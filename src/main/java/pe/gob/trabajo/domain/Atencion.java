@@ -124,7 +124,7 @@ public class Atencion implements Serializable {
     private Integer nSedeupd;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn(unique = true, name = "n_codliq")
     private Liquidacion liquidacion;
 
     @OneToMany(mappedBy = "atencion")

@@ -113,6 +113,18 @@ public class TipcalperiResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipcalperi));
     }
 
+    /** JH
+     * GET  /tipcalperis/activos : get all the tipcalperis.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipcalperis in body
+     */
+    @GetMapping("/tipcalperis/activos")
+    @Timed
+    public List<Tipcalperi> getAll_Activos() {
+        log.debug("REST request to get all tipcalperis");
+        return tipcalperiRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /tipcalperis/:id : delete the "id" tipcalperi.
      *

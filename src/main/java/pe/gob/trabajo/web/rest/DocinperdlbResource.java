@@ -137,6 +137,18 @@ public class DocinperdlbResource {
         return docinperdlbRepository.findListDocinperdlbById_Atencion(id_aten);
     }
 
+     /** JH
+     * GET  /docinperdlbs/seleccion/id_datlab/:id_datlab
+     * @param id_datlab es el id de la atencion
+     * @return the ResponseEntity with status 200 (OK) and with body the Docinperdlb, or with status 404 (Not Found)
+     */
+	@GetMapping("/docinperdlbs/seleccion/id_datlab/{id_datlab}")
+    @Timed
+    public List<Docinperdlb> getListDocingrper_ySeleccionadosByIdDatlab(@PathVariable Long id_datlab) {
+        log.debug("REST request to get Docinperdlb : id_datlab {} ", id_datlab);
+        return docinperdlbRepository.findListDocingrper_ySeleccionadosByIdDatlab(id_datlab);
+    }
+
     /**
      * DELETE  /docinperdlbs/:id : delete the "id" docinperdlb.
      *

@@ -114,6 +114,18 @@ public class BancosResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(bancos));
     }
 
+    /** JH
+     * GET  /bancos/activos : get all the bancos.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of bancos in body
+     */
+    @GetMapping("/bancos/activos")
+    @Timed
+    public List<Bancos> getAll_Activos() {
+        log.debug("REST request to get all bancos");
+        return bancosRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /bancos/:id : delete the "id" bancos.
      *

@@ -113,6 +113,18 @@ public class EstpericalResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(estperical));
     }
 
+    /** JH
+     * GET  /estpericals/activos : get all the estpericals.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of estpericals in body
+     */
+    @GetMapping("/estpericals/activos")
+    @Timed
+    public List<Estperical> getAll_Activos() {
+        log.debug("REST request to get all estpericals");
+        return estpericalRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /estpericals/:id : delete the "id" estperical.
      *

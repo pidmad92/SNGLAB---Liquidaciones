@@ -45,7 +45,7 @@ public class Calbensoc implements Serializable {
      * MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL
      */
     @ApiModelProperty(value = "MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL")
-    @Column(name = "n_calbens_2", precision=10, scale=2)
+    @Column(name = "n_calbens2", precision=10, scale=2)
     private BigDecimal nCalbens2;
 
     /**

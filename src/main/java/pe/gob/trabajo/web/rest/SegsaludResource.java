@@ -113,6 +113,18 @@ public class SegsaludResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(segsalud));
     }
 
+    /** JH
+     * GET  /segsaluds/activos : get all the segsaluds.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of segsaluds in body
+     */
+    @GetMapping("/segsaluds/activos")
+    @Timed
+    public List<Segsalud> getAll_Activos() {
+        log.debug("REST request to get all segsaluds");
+        return segsaludRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /segsaluds/:id : delete the "id" segsalud.
      *

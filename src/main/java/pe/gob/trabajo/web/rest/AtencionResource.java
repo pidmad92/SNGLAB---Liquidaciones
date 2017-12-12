@@ -133,7 +133,7 @@ public class AtencionResource {
 	@GetMapping("/atencions/empleador/id/{id_emple}")
     @Timed
     public List<Atencion> getListAtencionByIdEmpleador(@PathVariable Long id_emple) {
-        log.debug("REST request to get Trabajador : id_emple empleador {}", id_emple);
+        log.debug("REST request to get Atencion : id_emple empleador {}", id_emple);
         return atencionRepository.findListAtencionByIdEmpleador(id_emple);
     }
 
@@ -145,7 +145,7 @@ public class AtencionResource {
 	@GetMapping("/atencions/trabajador/id/{id_trab}")
     @Timed
     public List<Atencion> getListAtencionByIdTrabajador(@PathVariable Long id_trab) {
-        log.debug("REST request to get Trabajador : id trabajador {}", id_trab);
+        log.debug("REST request to get Atencion : id trabajador {}", id_trab);
         return atencionRepository.findListAtencionByIdTrabajador(id_trab);
     }
 
@@ -157,8 +157,20 @@ public class AtencionResource {
 	@GetMapping("/atencions/atenpase/trabajador/id/{id_trab}")
     @Timed
     public List<Atencion> getfindListAtenPase_ByIdTrabajador(@PathVariable Long id_trab) {
-        log.debug("REST request to get Trabajador : id trabajador {}", id_trab);
+        log.debug("REST request to get Atencion : id trabajador {}", id_trab);
         return atencionRepository.findListAtenPase_ByIdTrabajador(id_trab);
+    }
+
+    /** JH
+     * GET  /atencions/liquidaciones/trabajador/id/:id_trab/
+     * @param id_trab es el id del trabajador
+     * @return the ResponseEntity with status 200 (OK) and the list of atencions in body
+     */
+    @GetMapping("/atencions/liquidaciones/trabajador/id/{id_trab}")
+    @Timed
+    public List<Atencion> getLiquidaciones_ByIdTrabajador(@PathVariable Long id_trab) {
+        log.debug("REST request to get Atencion : id trabajador {}", id_trab);
+        return atencionRepository.findLiquidaciones_ByIdTrabajador(id_trab);
     }
 
     /**

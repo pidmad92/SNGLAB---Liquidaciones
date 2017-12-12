@@ -103,16 +103,23 @@ public class Conceprem implements Serializable {
     @Column(name = "n_sedeupd")
     private Integer nSedeupd;
 
+    // /**
+    //  * CODIGO RECURSIVO DEL HIJO
+    //  */
+    // @Column(name = "n_codcrsup")
+    // private Long nCodcrsup;
+
     @ManyToOne
     @JoinColumn(name = "n_codcalrcm")
     private Calrcmperi calrcmperi;
 
     @ManyToOne
-    // @JoinColumn(name = "n_codconrem")
+    @JoinColumn(name = "n_codcrsup")
     private Conceprem conceprem;
 
     @OneToMany(mappedBy = "conceprem")
-    @JsonIgnore
+    //@JsonIgnore
+    // @JoinColumn(name = "n_codconrem")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Conceprem> conceprems = new HashSet<>();
 
@@ -326,6 +333,22 @@ public class Conceprem implements Serializable {
     public void setTipconrem(Tipconrem tipconrem) {
         this.tipconrem = tipconrem;
     }
+/*
+   del atributo recursivo
+*/
+    // public Long getnCodcrsup() {
+    //     return nCodcrsup;
+    // }
+
+    // public Conceprem nCodcrsup(Long nCodcrsup) {
+    //     this.nCodcrsup = nCodcrsup;
+    //     return this;
+    // }
+
+    // public void setnCodcrsup(Long nCodcrsup) {
+    //     this.nCodcrsup = nCodcrsup;
+    // }
+
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
     @Override

@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Segsalud;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface SegsaludRepository extends JpaRepository<Segsalud, Long> {
+
+    @Query("select segsalud from Segsalud segsalud where segsalud.nFlgactivo = true")
+    List<Segsalud> findAll_Activos();
 
 }

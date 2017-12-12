@@ -95,7 +95,7 @@ public class Calrcmperi implements Serializable {
     private Integer nSedeupd;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn(unique = true, name = "n_codcalper")
     private Calperiodo calperiodo;
 
     @OneToMany(mappedBy = "calrcmperi")

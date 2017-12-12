@@ -92,7 +92,7 @@ public class Interesperi implements Serializable {
     private Integer nSedeupd;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn(unique = true, name = "n_codcalper")
     private Calperiodo calperiodo;
 
     @ManyToOne

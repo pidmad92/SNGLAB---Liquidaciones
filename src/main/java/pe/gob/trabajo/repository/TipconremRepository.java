@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Tipconrem;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface TipconremRepository extends JpaRepository<Tipconrem, Long> {
+
+    @Query("select tipconrem from Tipconrem tipconrem where tipconrem.nFlgactivo = true")
+    List<Tipconrem> findAll_Activos();
 
 }

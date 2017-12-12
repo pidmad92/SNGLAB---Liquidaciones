@@ -126,7 +126,7 @@ public class MotivpaseResource {
     }
 
      /** JH
-     * GET  /motatenofic/atencion/id/:id_pase :
+     * GET  motiv-pases/pasegl/id/:id_pase :
      * @param id_pase es el id del Pasegl
      * @return the ResponseEntity with status 200 (OK) and with body the MotivPase, or with status 404 (Not Found)
      */
@@ -135,6 +135,18 @@ public class MotivpaseResource {
     public List<Motivpase> getListMotivPaseById_Pasegl(@PathVariable Long id_pase) {
         log.debug("REST request to get MotivPase : id_pase {}", id_pase);
         return motivpaseRepository.findListMotivPaseById_Pasegl(id_pase);
+    }
+
+     /** JH
+     * GET  /motiv-pases/idoficina/:id_ofi/idpase/:id_pase :
+     * @param id_ofi es el id de la Oficina
+     * @return the ResponseEntity with status 200 (OK) and with body the Motivpase, or with status 404 (Not Found)
+     */
+	@GetMapping("/motivpases/idoficina/{id_ofi}/idpase/{id_pase}")
+    @Timed
+    public List<Motivpase> getListMotivPaseByIdOfic_IdPase(@PathVariable Long id_ofi, @PathVariable Long id_pase) {
+        log.debug("REST request to get Motivpase : id_ofi {} id_pase {}", id_ofi,id_pase);
+        return motivpaseRepository.findListMotivPaseByIdOfic_IdPase(id_ofi,id_pase);
     }
 
     /**

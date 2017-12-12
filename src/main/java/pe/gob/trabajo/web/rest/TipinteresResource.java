@@ -113,6 +113,18 @@ public class TipinteresResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(tipinteres));
     }
 
+    /** JH
+     * GET  /tipinteres/activos : get all the tipinteres.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of tipinteres in body
+     */
+    @GetMapping("/tipinteres/activos")
+    @Timed
+    public List<Tipinteres> getAll_Activos() {
+        log.debug("REST request to get all tipinteres");
+        return tipinteresRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /tipinteres/:id : delete the "id" tipinteres.
      *

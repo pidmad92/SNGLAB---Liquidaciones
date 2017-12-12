@@ -4,6 +4,7 @@ import pe.gob.trabajo.domain.Estperical;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import java.util.List;
 
 
 /**
@@ -12,5 +13,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface EstpericalRepository extends JpaRepository<Estperical, Long> {
+
+    @Query("select estperical from Estperical estperical where estperical.nFlgactivo = true")
+    List<Estperical> findAll_Activos();
 
 }

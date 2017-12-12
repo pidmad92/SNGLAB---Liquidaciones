@@ -113,6 +113,18 @@ public class BensocialResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(bensocial));
     }
 
+    /** JH
+     * GET  /bensocials/activos : get all the bensocials.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of bensocials in body
+     */
+    @GetMapping("/bensocials/activos")
+    @Timed
+    public List<Bensocial> getAll_Activos() {
+        log.debug("REST request to get all bensocials");
+        return bensocialRepository.findAll_Activos();
+        }
+
     /**
      * DELETE  /bensocials/:id : delete the "id" bensocial.
      *

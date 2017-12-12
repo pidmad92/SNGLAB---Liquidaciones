@@ -43,7 +43,7 @@ public class Calperiodo implements Serializable {
      * MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO
      */
     @ApiModelProperty(value = "MONTO TOTAL2 CALCULADO DEL BENEFICIO SOCIAL EN EL PERIODO")
-    @Column(name = "n_calper_2", precision=10, scale=2)
+    @Column(name = "n_calper2", precision=10, scale=2)
     private BigDecimal nCalper2;
 
     /**

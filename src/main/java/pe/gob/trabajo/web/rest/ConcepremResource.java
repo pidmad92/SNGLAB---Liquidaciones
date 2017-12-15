@@ -5,6 +5,7 @@ import pe.gob.trabajo.domain.Conceprem;
 
 import pe.gob.trabajo.repository.ConcepremRepository;
 import pe.gob.trabajo.repository.search.ConcepremSearchRepository;
+import pe.gob.trabajo.web.rest.errors.BadRequestAlertException;
 import pe.gob.trabajo.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -147,7 +148,7 @@ public class ConcepremResource {
     @GetMapping("/conceprems/id_conceprem/{id_concep}/id_tipcalconre/{id_tipccr}")
     @Timed
     public List<Conceprem> getListConcepremHijo_ByIdPadreIdTipo(@PathVariable Long id_concep, @PathVariable Long id_tipccr) {
-        log.debug("REST request to get all conceprems: id_concep {}, id_tipcalconre",id_concep,id_tipccr);
+        log.debug("REST request to get all conceprems: id_concep {}, id_tipcalconre {}",id_concep,id_tipccr);
         return concepremRepository.findListConcepremHijo_ByIdPadreIdTipo(id_concep, id_tipccr);
     }
 
@@ -162,6 +163,18 @@ public class ConcepremResource {
     public List<Conceprem> getListConceprem_ByIdAtencionIdBensocial(@PathVariable Long id_aten, @PathVariable Long id_bensoc) {
         log.debug("REST request to get all conceprems: id_aten {}, id_bensoc {}",id_aten,id_bensoc);
         return concepremRepository.findListConceprem_ByIdAtencionIdBensocial(id_aten, id_bensoc);
+    }
+
+    /** JH
+     * GET /conceprems/id_conceprem/:id_concep : get all the conceprems hijos.
+     * @param id_concep es el id del Concepto Remunerativo
+     * @return the ResponseEntity with status 200 (OK) and the list of conceprems in body
+     */
+    @GetMapping("/conceprems/id_conceprem/{id_concep}")
+    @Timed
+    public List<Conceprem> getListConcepremHijo_ByIdPadre(@PathVariable Long id_concep) {
+        log.debug("REST request to get all conceprems: id_concep {}",id_concep);
+        return concepremRepository.findListConcepremHijo_ByIdPadre(id_concep);
     }
 
     /**

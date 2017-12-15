@@ -21,6 +21,10 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="n_codcrsup" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="v_nomconrem" type="varchar(100)">
                 <constraints nullable="false" />
             </column>

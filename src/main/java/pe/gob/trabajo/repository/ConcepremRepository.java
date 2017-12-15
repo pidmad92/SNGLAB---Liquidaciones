@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public interface ConcepremRepository extends JpaRepository<Conceprem, Long> {
 
+    // @Query("select conceprem from Conceprem conceprem where conceprem.nCodcrsup is null and conceprem.nFlgactivo = true")
     @Query("select conceprem from Conceprem conceprem where conceprem.nFlgactivo = true")
     List<Conceprem> findAll_Activos();
 
@@ -55,7 +56,7 @@ public interface ConcepremRepository extends JpaRepository<Conceprem, Long> {
         " , conceprem.tipconrem.vNomtipcr as ConcepremTipconrem_vNomtipcr " +
         " ) " +  
         " from Conceprem conceprem " + 
-        " where conceprem.calrcmperi.calperiodo.id=?1 and conceprem.nFlgactivo = true ")
+        " where conceprem.nCodcrsup is null and conceprem.calrcmperi.calperiodo.id=?1 and conceprem.nFlgactivo = true ")
             // "where calrcmperi.calperiodo.id=?1 and conceprem.nCodcrsup <= 0 and conceprem.nFlgactivo = true and calrcmperi.nFlgactivo = true")
         //     "where calrcmperi.calperiodo.id=?1 and conceprem.nFlgactivo = true and calrcmperi.nFlgactivo = true")
     List<Conceprem> findListConceprem_ByIdCalperiodo(Long id_calper);
@@ -98,14 +99,35 @@ public interface ConcepremRepository extends JpaRepository<Conceprem, Long> {
                     " , conceprem.tipconrem.vNomtipcr as ConcepremTipconrem_vNomtipcr " +
                     " ) " +  
         " from Conceprem conceprem inner join Atencion atencion on atencion.liquidacion.id=conceprem.calrcmperi.calperiodo.calbensoc.liquidacion.id" + 
-        // " where conceprem.nCodcrsup < 1 and atencion.id=?1 and conceprem.calrcmperi.calperiodo.calbensoc.bensocial.id=?2 and atencion.nFlgactivo = true and conceprem.nFlgactivo = true ")
-        " where atencion.id=?1 and conceprem.calrcmperi.calperiodo.calbensoc.bensocial.id=?2 and atencion.nFlgactivo = true and conceprem.nFlgactivo = true ")
+        " where conceprem.nCodcrsup is null and atencion.id=?1 and conceprem.calrcmperi.calperiodo.calbensoc.bensocial.id=?2 and atencion.nFlgactivo = true and conceprem.nFlgactivo = true ")
     List<Conceprem> findListConceprem_ByIdAtencionIdBensocial(Long id_aten,Long id_bensoc);
 
-    @Query("select conceprem " + 
-            "from Conceprem conceprem " + 
-            // "where conceprem.tipcalconre.id=?2 and conceprem.nCodcrsup=?1 and conceprem.nFlgactivo = true")
-            "where conceprem.tipcalconre.id=?2 and conceprem.nFlgactivo = true")
+    // Lista de Conceprem hijos de un Conceprem Padre filtrado por un Tipcalconre
+    // @Query("select conceprem " + 
+    @Query("select new map( " +
+                    " conceprem.id as Conceprem_id " +
+                    " , conceprem.nCodcrsup as Conceprem_nCodcrsup " +
+                    " , conceprem.vNomconrem as Conceprem_vNomconrem " +
+                    " , conceprem.nValconrem as Conceprem_nValconrem " +
+                    " , conceprem.tipcalconre.id as ConcepremTipcalconre_id " +
+                    " , conceprem.tipcalconre.vNomtcal as ConcepremTipcalconre_vNomtcal " +
+                    " ) " +  
+            " from Conceprem conceprem " + 
+            " where conceprem.tipcalconre.id=?2 and conceprem.nCodcrsup=?1 and conceprem.nFlgactivo = true ")
     List<Conceprem> findListConcepremHijo_ByIdPadreIdTipo(Long id_concep,Long id_tipccr);
+
+    // Lista de Conceprem hijos de un Conceprem Padre
+    // @Query("select conceprem " + 
+    @Query("select new map( " +
+                    " conceprem.id as Conceprem_id " +
+                    " , conceprem.nCodcrsup as Conceprem_nCodcrsup " +
+                    " , conceprem.vNomconrem as Conceprem_vNomconrem " +
+                    " , conceprem.nValconrem as Conceprem_nValconrem " +
+                    " , conceprem.tipcalconre.id as ConcepremTipcalconre_id " +
+                    " , conceprem.tipcalconre.vNomtcal as ConcepremTipcalconre_vNomtcal " +
+                    " ) " +  
+            " from Conceprem conceprem " + 
+            " where conceprem.nCodcrsup=?1 and conceprem.nFlgactivo = true ")
+    List<Conceprem> findListConcepremHijo_ByIdPadre(Long id_concep);
 
 }

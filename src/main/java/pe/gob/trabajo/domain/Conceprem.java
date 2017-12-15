@@ -35,6 +35,13 @@ public class Conceprem implements Serializable {
     private Long id;
 
     /**
+     * CODIGO PADRE DEL CONCEPTO REMUNERATIVO
+     */
+    @ApiModelProperty(value = "CODIGO PADRE DEL CONCEPTO REMUNERATIVO")
+    @Column(name = "n_codcrsup")
+    private Long nCodcrsup;
+
+    /**
      * NOMBRE DEL CONCEPTO REMUNERATIVO
      */
     @NotNull
@@ -103,28 +110,24 @@ public class Conceprem implements Serializable {
     @Column(name = "n_sedeupd")
     private Integer nSedeupd;
 
-    // /**
-    //  * CODIGO RECURSIVO DEL HIJO
-    //  */
-    // @Column(name = "n_codcrsup")
-    // private Long nCodcrsup;
-
     @ManyToOne
     @JoinColumn(name = "n_codcalrcm")
     private Calrcmperi calrcmperi;
 
-    @ManyToOne
-    // @JoinColumn(name = "n_codcrsup")
-    private Conceprem conceprem;
+    // @ManyToOne
+    // private Conceprem conceprem;
 
-    @OneToMany(mappedBy = "conceprem")
-    @JsonIgnore
-    // @JoinColumn(name = "n_codconrem")
-    // @JoinColumn(name = "n_codcrsup")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    //  @JoinColumn(name = "n_codcrsup")
-    private Set<Conceprem> conceprems = new HashSet<>();
-    // private Set<Conceprem> nCodcrsup = new HashSet<>();
+    @ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="n_codcrsup", insertable = false, updatable = false)
+	private Conceprem concepsup;
+
+    //@OneToMany(mappedBy = "conceprem")
+    //@JsonIgnore
+    //@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //private Set<Conceprem> conceprems = new HashSet<>();
+
+    @OneToMany(mappedBy = "concepsup")
+    private Set<Conceprem> subordinates = new HashSet<Conceprem>();
 
     @ManyToOne
     @JoinColumn(name = "n_codtcal")
@@ -142,6 +145,19 @@ public class Conceprem implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    // public Long getnCodcrsup() {
+    //     return nCodcrsup;
+    // }
+
+    // public Conceprem nCodcrsup(Long nCodcrsup) {
+    //     this.nCodcrsup = nCodcrsup;
+    //     return this;
+    // }
+
+    // public void setnCodcrsup(Long nCodcrsup) {
+    //     this.nCodcrsup = nCodcrsup;
+    // }
 
     public String getvNomconrem() {
         return vNomconrem;
@@ -273,43 +289,45 @@ public class Conceprem implements Serializable {
         this.calrcmperi = calrcmperi;
     }
 
-    public Conceprem getConceprem() {
-        return conceprem;
+    public Conceprem getConcepsup() {
+        return concepsup;
     }
 
-    public Conceprem conceprem(Conceprem conceprem) {
-        this.conceprem = conceprem;
-        return this;
+    public void setConcepsup(Conceprem concepsup) {
+        this.concepsup = concepsup;
     }
 
-    public void setConceprem(Conceprem conceprem) {
-        this.conceprem = conceprem;
+    public Long getConcepsupId() {
+        return nCodcrsup;
+    }
+    public void setConcepsupId(Long nCodcrsup) {
+        this.nCodcrsup = nCodcrsup;
     }
 
-    public Set<Conceprem> getConceprems() {
-        return conceprems;
-    }
+    // public Set<Conceprem> getConceprems() {
+    //     return conceprems;
+    // }
 
-    public Conceprem conceprems(Set<Conceprem> conceprems) {
-        this.conceprems = conceprems;
-        return this;
-    }
+    // public Conceprem conceprems(Set<Conceprem> conceprems) {
+    //     this.conceprems = conceprems;
+    //     return this;
+    // }
 
-    public Conceprem addConceprem(Conceprem conceprem) {
-        this.conceprems.add(conceprem);
-        conceprem.setConceprem(this);
-        return this;
-    }
+    // public Conceprem addConceprem(Conceprem conceprem) {
+    //     this.conceprems.add(conceprem);
+    //     conceprem.setConceprem(this);
+    //     return this;
+    // }
 
-    public Conceprem removeConceprem(Conceprem conceprem) {
-        this.conceprems.remove(conceprem);
-        conceprem.setConceprem(null);
-        return this;
-    }
+    // public Conceprem removeConceprem(Conceprem conceprem) {
+    //     this.conceprems.remove(conceprem);
+    //     conceprem.setConceprem(null);
+    //     return this;
+    // }
 
-    public void setConceprems(Set<Conceprem> conceprems) {
-        this.conceprems = conceprems;
-    }
+    // public void setConceprems(Set<Conceprem> conceprems) {
+    //     this.conceprems = conceprems;
+    // }
 
     public Tipcalconre getTipcalconre() {
         return tipcalconre;
@@ -336,22 +354,6 @@ public class Conceprem implements Serializable {
     public void setTipconrem(Tipconrem tipconrem) {
         this.tipconrem = tipconrem;
     }
-/*
-   del atributo recursivo
-*/
-    // public Long getnCodcrsup() {
-    //     return nCodcrsup;
-    // }
-
-    // public Conceprem nCodcrsup(Long nCodcrsup) {
-    //     this.nCodcrsup = nCodcrsup;
-    //     return this;
-    // }
-
-    // public void setnCodcrsup(Long nCodcrsup) {
-    //     this.nCodcrsup = nCodcrsup;
-    // }
-
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
     @Override
@@ -378,6 +380,7 @@ public class Conceprem implements Serializable {
     public String toString() {
         return "Conceprem{" +
             "id=" + getId() +
+            // ", nCodcrsup='" + getnCodcrsup() + "'" +
             ", vNomconrem='" + getvNomconrem() + "'" +
             ", nValconrem='" + getnValconrem() + "'" +
             ", nUsuareg='" + getnUsuareg() + "'" +

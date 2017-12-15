@@ -27,6 +27,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import static pe.gob.trabajo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -40,6 +41,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LiquidacionesApp.class)
 public class ConcepremResourceIntTest {
+
+    private static final Long DEFAULT_N_CODCRSUP = 1L;
+    private static final Long UPDATED_N_CODCRSUP = 2L;
 
     private static final String DEFAULT_V_NOMCONREM = "AAAAAAAAAA";
     private static final String UPDATED_V_NOMCONREM = "BBBBBBBBBB";
@@ -97,6 +101,7 @@ public class ConcepremResourceIntTest {
         this.restConcepremMockMvc = MockMvcBuilders.standaloneSetup(concepremResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
             .setMessageConverters(jacksonMessageConverter).build();
     }
 
@@ -108,6 +113,7 @@ public class ConcepremResourceIntTest {
      */
     public static Conceprem createEntity(EntityManager em) {
         Conceprem conceprem = new Conceprem()
+            .nCodcrsup(DEFAULT_N_CODCRSUP)
             .vNomconrem(DEFAULT_V_NOMCONREM)
             .nValconrem(DEFAULT_N_VALCONREM)
             .nUsuareg(DEFAULT_N_USUAREG)
@@ -141,6 +147,7 @@ public class ConcepremResourceIntTest {
         List<Conceprem> concepremList = concepremRepository.findAll();
         assertThat(concepremList).hasSize(databaseSizeBeforeCreate + 1);
         Conceprem testConceprem = concepremList.get(concepremList.size() - 1);
+        assertThat(testConceprem.getnCodcrsup()).isEqualTo(DEFAULT_N_CODCRSUP);
         assertThat(testConceprem.getvNomconrem()).isEqualTo(DEFAULT_V_NOMCONREM);
         assertThat(testConceprem.getnValconrem()).isEqualTo(DEFAULT_N_VALCONREM);
         assertThat(testConceprem.getnUsuareg()).isEqualTo(DEFAULT_N_USUAREG);
@@ -276,6 +283,7 @@ public class ConcepremResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(conceprem.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nCodcrsup").value(hasItem(DEFAULT_N_CODCRSUP.intValue())))
             .andExpect(jsonPath("$.[*].vNomconrem").value(hasItem(DEFAULT_V_NOMCONREM.toString())))
             .andExpect(jsonPath("$.[*].nValconrem").value(hasItem(DEFAULT_N_VALCONREM.intValue())))
             .andExpect(jsonPath("$.[*].nUsuareg").value(hasItem(DEFAULT_N_USUAREG)))
@@ -298,6 +306,7 @@ public class ConcepremResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(conceprem.getId().intValue()))
+            .andExpect(jsonPath("$.nCodcrsup").value(DEFAULT_N_CODCRSUP.intValue()))
             .andExpect(jsonPath("$.vNomconrem").value(DEFAULT_V_NOMCONREM.toString()))
             .andExpect(jsonPath("$.nValconrem").value(DEFAULT_N_VALCONREM.intValue()))
             .andExpect(jsonPath("$.nUsuareg").value(DEFAULT_N_USUAREG))
@@ -328,6 +337,7 @@ public class ConcepremResourceIntTest {
         // Update the conceprem
         Conceprem updatedConceprem = concepremRepository.findOne(conceprem.getId());
         updatedConceprem
+            .nCodcrsup(UPDATED_N_CODCRSUP)
             .vNomconrem(UPDATED_V_NOMCONREM)
             .nValconrem(UPDATED_N_VALCONREM)
             .nUsuareg(UPDATED_N_USUAREG)
@@ -347,6 +357,7 @@ public class ConcepremResourceIntTest {
         List<Conceprem> concepremList = concepremRepository.findAll();
         assertThat(concepremList).hasSize(databaseSizeBeforeUpdate);
         Conceprem testConceprem = concepremList.get(concepremList.size() - 1);
+        assertThat(testConceprem.getnCodcrsup()).isEqualTo(UPDATED_N_CODCRSUP);
         assertThat(testConceprem.getvNomconrem()).isEqualTo(UPDATED_V_NOMCONREM);
         assertThat(testConceprem.getnValconrem()).isEqualTo(UPDATED_N_VALCONREM);
         assertThat(testConceprem.getnUsuareg()).isEqualTo(UPDATED_N_USUAREG);
@@ -414,6 +425,7 @@ public class ConcepremResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(conceprem.getId().intValue())))
+            .andExpect(jsonPath("$.[*].nCodcrsup").value(hasItem(DEFAULT_N_CODCRSUP.intValue())))
             .andExpect(jsonPath("$.[*].vNomconrem").value(hasItem(DEFAULT_V_NOMCONREM.toString())))
             .andExpect(jsonPath("$.[*].nValconrem").value(hasItem(DEFAULT_N_VALCONREM.intValue())))
             .andExpect(jsonPath("$.[*].nUsuareg").value(hasItem(DEFAULT_N_USUAREG)))

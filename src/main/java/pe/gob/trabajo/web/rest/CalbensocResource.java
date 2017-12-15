@@ -123,10 +123,10 @@ public class CalbensocResource {
     public List<Calbensoc> getAll_Activos() {
         log.debug("REST request to get all calbensocs");
         return calbensocRepository.findAll_Activos();
-        }
+    }
 
     /** JH
-     * GET  /calbensocs/id_atencion/{id_aten}/id_bensocial/{id_bsoc} : get all the calbensocs.
+     * GET  /calbensocs/id_atencion/:id_aten/id_bensocial/:id_bsoc : get all the calbensocs.
      * @param id_aten es el id de la Atencion
      * @param id_bsoc es el id del Bensocial
      * @return the ResponseEntity with status 200 (OK) and the list of calbensocs in body
@@ -136,6 +136,18 @@ public class CalbensocResource {
     public List<Calbensoc> getCalbensoc_ByIdAtencionIdBensocial(@PathVariable Long id_aten, @PathVariable Long id_bsoc) {
         log.debug("REST request to get all calbensocs: id_aten {}, id_bsoc {}",id_aten,id_bsoc);
         return calbensocRepository.findCalbensoc_ByIdAtencionIdBensocial(id_aten, id_bsoc);
+    }
+
+    /** JH
+     * GET  /calbensocs/id_atencion/:id_aten : get all the calbensocs.
+     * @param id_aten es el id de la Atencion
+     * @return the ResponseEntity with status 200 (OK) and the list of calbensocs in body
+     */
+    @GetMapping("/calbensocs/id_atencion/{id_aten}")
+    @Timed
+    public List<Calbensoc> getAllCalbensoc_ByIdAtencion(@PathVariable Long id_aten) {
+        log.debug("REST request to get all calbensocs: id_aten {}",id_aten);
+        return calbensocRepository.findAllCalbensoc_ByIdAtencion(id_aten);
     }
 
     /**

@@ -78,6 +78,27 @@ public class Calperiodo implements Serializable {
     private Integer nTnocomput;
 
     /**
+     * TIEMPO COMPUTABLE DEL PERIODO DEL BENEFICIO ACTUAL
+     */
+    @ApiModelProperty(value = "TIEMPO COMPUTABLE DEL PERIODO DEL BENEFICIO ACTUAL")
+    @Column(name = "n_tcomput")
+    private Integer nTcomput;
+
+    /**
+     * CODIGO DEL PERIODO HIJO1 DE UN BENEFICIO SOCIAL DEL PERIODO Y BENEFICIO ACTUAL
+     */
+    @ApiModelProperty(value = "CODIGO DEL PERIODO HIJO1 DE UN BENEFICIO SOCIAL DEL PERIODO Y BENEFICIO ACTUAL")
+    @Column(name = "n_codhijo1")
+    private Long nCodhijo1;
+
+    /**
+     * CODIGO DEL PERIODO HIJO2 DE UN BENEFICIO SOCIAL DEL PERIODO Y BENEFICIO ACTUAL
+     */
+    @ApiModelProperty(value = "CODIGO DEL PERIODO HIJO2 DE UN BENEFICIO SOCIAL DEL PERIODO Y BENEFICIO ACTUAL")
+    @Column(name = "n_codhijo2")
+    private Long nCodhijo2;
+
+    /**
      * EN CASO SE TRATASE DE VACACIONES - NUMERO DE DIAS GOZADOS EN EL PERIODO
      */
     @ApiModelProperty(value = "EN CASO SE TRATASE DE VACACIONES - NUMERO DE DIAS GOZADOS EN EL PERIODO")
@@ -252,6 +273,45 @@ public class Calperiodo implements Serializable {
 
     public void setnTnocomput(Integer nTnocomput) {
         this.nTnocomput = nTnocomput;
+    }
+
+    public Integer getnTcomput() {
+        return nTcomput;
+    }
+
+    public Calperiodo nTcomput(Integer nTcomput) {
+        this.nTcomput = nTcomput;
+        return this;
+    }
+
+    public void setnTcomput(Integer nTcomput) {
+        this.nTcomput = nTcomput;
+    }
+
+    public Long getnCodhijo1() {
+        return nCodhijo1;
+    }
+
+    public Calperiodo nCodhijo1(Long nCodhijo1) {
+        this.nCodhijo1 = nCodhijo1;
+        return this;
+    }
+
+    public void setnCodhijo1(Long nCodhijo1) {
+        this.nCodhijo1 = nCodhijo1;
+    }
+
+    public Long getnCodhijo2() {
+        return nCodhijo2;
+    }
+
+    public Calperiodo nCodhijo2(Long nCodhijo2) {
+        this.nCodhijo2 = nCodhijo2;
+        return this;
+    }
+
+    public void setnCodhijo2(Long nCodhijo2) {
+        this.nCodhijo2 = nCodhijo2;
     }
 
     public Integer getnDgozados() {
@@ -467,6 +527,9 @@ public class Calperiodo implements Serializable {
             ", tFecini='" + gettFecini() + "'" +
             ", tFecfin='" + gettFecfin() + "'" +
             ", nTnocomput='" + getnTnocomput() + "'" +
+            ", nTcomput='" + getnTcomput() + "'" +
+            ", nCodhijo1='" + getnCodhijo1() + "'" +
+            ", nCodhijo2='" + getnCodhijo2() + "'" +
             ", nDgozados='" + getnDgozados() + "'" +
             ", nDadeudos='" + getnDadeudos() + "'" +
             ", nAnobase='" + getnAnobase() + "'" +

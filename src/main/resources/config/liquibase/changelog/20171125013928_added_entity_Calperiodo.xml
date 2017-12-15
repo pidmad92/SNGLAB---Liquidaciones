@@ -45,6 +45,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="n_tcomput" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="n_codhijo_1" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="n_codhijo_2" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <column name="n_dgozados" type="integer">
                 <constraints nullable="true" />
             </column>

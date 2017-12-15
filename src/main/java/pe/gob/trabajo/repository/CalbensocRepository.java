@@ -22,4 +22,9 @@ public interface CalbensocRepository extends JpaRepository<Calbensoc, Long> {
     " where atencion.id=?1 and calbensoc.bensocial.id=?2 and calbensoc.bensocial.nFlgactivo = true and atencion.nFlgactivo = true and calbensoc.nFlgactivo = true")
     List<Calbensoc> findCalbensoc_ByIdAtencionIdBensocial(Long id_aten, Long id_bsoc);
 
+    @Query("select calbensoc " + 
+    " from Calbensoc calbensoc inner join Atencion atencion on atencion.liquidacion.id=calbensoc.liquidacion.id " + 
+    " where atencion.id=?1 and atencion.nFlgactivo = true and calbensoc.nFlgactivo = true ")
+    List<Calbensoc> findAllCalbensoc_ByIdAtencion(Long id_aten);
+
 }

@@ -114,14 +114,17 @@ public class Conceprem implements Serializable {
     private Calrcmperi calrcmperi;
 
     @ManyToOne
-    @JoinColumn(name = "n_codcrsup")
+    // @JoinColumn(name = "n_codcrsup")
     private Conceprem conceprem;
 
     @OneToMany(mappedBy = "conceprem")
-    //@JsonIgnore
+    @JsonIgnore
     // @JoinColumn(name = "n_codconrem")
+    // @JoinColumn(name = "n_codcrsup")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    //  @JoinColumn(name = "n_codcrsup")
     private Set<Conceprem> conceprems = new HashSet<>();
+    // private Set<Conceprem> nCodcrsup = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "n_codtcal")

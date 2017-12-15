@@ -11,7 +11,7 @@
             "relationshipName": "conceprem",
             "otherEntityName": "conceprem",
             "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "otherEntityField": "nCodcrsup"
         },
         {
             "relationshipType": "one-to-many",
@@ -33,6 +33,11 @@
         }
     ],
     "fields": [
+        {
+            "fieldName": "nCodcrsup",
+            "javadoc": "CODIGO PADRE DEL CONCEPTO REMUNERATIVO",
+            "fieldType": "Long"
+        },
         {
             "fieldName": "vNomconrem",
             "javadoc": "NOMBRE DEL CONCEPTO REMUNERATIVO",

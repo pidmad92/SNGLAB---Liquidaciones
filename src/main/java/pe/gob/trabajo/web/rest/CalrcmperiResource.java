@@ -123,7 +123,19 @@ public class CalrcmperiResource {
     public List<Calrcmperi> getAll_Activos() {
         log.debug("REST request to get all calrcmperis");
         return calrcmperiRepository.findAll_Activos();
-        }
+    }
+
+    /** JH
+     * GET  /calrcmperis/id_calper/:id_calper : get el RCM de un Calperiodo.
+     * @param id_calper es el id delCalperiodo
+     * @return the ResponseEntity with status 200 (OK) and the list of calrcmperis in body
+     */
+    @GetMapping("/calrcmperis/id_calper/{id_calper}")
+    @Timed
+    public List<Calrcmperi> getAll_Activos(@PathVariable Long id_calper) {
+        log.debug("REST request to get all calrcmperis: id_calper {}",id_calper);
+        return calrcmperiRepository.find_RCM_ByIdCalperiodo(id_calper);
+    }
 
     /**
      * DELETE  /calrcmperis/:id : delete the "id" calrcmperi.

@@ -29,6 +29,7 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import static pe.gob.trabajo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -60,6 +61,15 @@ public class CalperiodoResourceIntTest {
 
     private static final Integer DEFAULT_N_TNOCOMPUT = 1;
     private static final Integer UPDATED_N_TNOCOMPUT = 2;
+
+    private static final Integer DEFAULT_N_TCOMPUT = 1;
+    private static final Integer UPDATED_N_TCOMPUT = 2;
+
+    private static final Long DEFAULT_N_CODHIJO_1 = 1L;
+    private static final Long UPDATED_N_CODHIJO_1 = 2L;
+
+    private static final Long DEFAULT_N_CODHIJO_2 = 1L;
+    private static final Long UPDATED_N_CODHIJO_2 = 2L;
 
     private static final Integer DEFAULT_N_DGOZADOS = 1;
     private static final Integer UPDATED_N_DGOZADOS = 2;
@@ -120,6 +130,7 @@ public class CalperiodoResourceIntTest {
         this.restCalperiodoMockMvc = MockMvcBuilders.standaloneSetup(calperiodoResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
+            .setConversionService(createFormattingConversionService())
             .setMessageConverters(jacksonMessageConverter).build();
     }
 
@@ -137,6 +148,9 @@ public class CalperiodoResourceIntTest {
             .tFecini(DEFAULT_T_FECINI)
             .tFecfin(DEFAULT_T_FECFIN)
             .nTnocomput(DEFAULT_N_TNOCOMPUT)
+            .nTcomput(DEFAULT_N_TCOMPUT)
+            .nCodhijo1(DEFAULT_N_CODHIJO_1)
+            .nCodhijo2(DEFAULT_N_CODHIJO_2)
             .nDgozados(DEFAULT_N_DGOZADOS)
             .nDadeudos(DEFAULT_N_DADEUDOS)
             .nAnobase(DEFAULT_N_ANOBASE)
@@ -177,6 +191,9 @@ public class CalperiodoResourceIntTest {
         assertThat(testCalperiodo.gettFecini()).isEqualTo(DEFAULT_T_FECINI);
         assertThat(testCalperiodo.gettFecfin()).isEqualTo(DEFAULT_T_FECFIN);
         assertThat(testCalperiodo.getnTnocomput()).isEqualTo(DEFAULT_N_TNOCOMPUT);
+        assertThat(testCalperiodo.getnTcomput()).isEqualTo(DEFAULT_N_TCOMPUT);
+        assertThat(testCalperiodo.getnCodhijo1()).isEqualTo(DEFAULT_N_CODHIJO_1);
+        assertThat(testCalperiodo.getnCodhijo2()).isEqualTo(DEFAULT_N_CODHIJO_2);
         assertThat(testCalperiodo.getnDgozados()).isEqualTo(DEFAULT_N_DGOZADOS);
         assertThat(testCalperiodo.getnDadeudos()).isEqualTo(DEFAULT_N_DADEUDOS);
         assertThat(testCalperiodo.getnAnobase()).isEqualTo(DEFAULT_N_ANOBASE);
@@ -355,6 +372,9 @@ public class CalperiodoResourceIntTest {
             .andExpect(jsonPath("$.[*].tFecini").value(hasItem(DEFAULT_T_FECINI.toString())))
             .andExpect(jsonPath("$.[*].tFecfin").value(hasItem(DEFAULT_T_FECFIN.toString())))
             .andExpect(jsonPath("$.[*].nTnocomput").value(hasItem(DEFAULT_N_TNOCOMPUT)))
+            .andExpect(jsonPath("$.[*].nTcomput").value(hasItem(DEFAULT_N_TCOMPUT)))
+            .andExpect(jsonPath("$.[*].nCodhijo1").value(hasItem(DEFAULT_N_CODHIJO_1.intValue())))
+            .andExpect(jsonPath("$.[*].nCodhijo2").value(hasItem(DEFAULT_N_CODHIJO_2.intValue())))
             .andExpect(jsonPath("$.[*].nDgozados").value(hasItem(DEFAULT_N_DGOZADOS)))
             .andExpect(jsonPath("$.[*].nDadeudos").value(hasItem(DEFAULT_N_DADEUDOS)))
             .andExpect(jsonPath("$.[*].nAnobase").value(hasItem(DEFAULT_N_ANOBASE)))
@@ -384,6 +404,9 @@ public class CalperiodoResourceIntTest {
             .andExpect(jsonPath("$.tFecini").value(DEFAULT_T_FECINI.toString()))
             .andExpect(jsonPath("$.tFecfin").value(DEFAULT_T_FECFIN.toString()))
             .andExpect(jsonPath("$.nTnocomput").value(DEFAULT_N_TNOCOMPUT))
+            .andExpect(jsonPath("$.nTcomput").value(DEFAULT_N_TCOMPUT))
+            .andExpect(jsonPath("$.nCodhijo1").value(DEFAULT_N_CODHIJO_1.intValue()))
+            .andExpect(jsonPath("$.nCodhijo2").value(DEFAULT_N_CODHIJO_2.intValue()))
             .andExpect(jsonPath("$.nDgozados").value(DEFAULT_N_DGOZADOS))
             .andExpect(jsonPath("$.nDadeudos").value(DEFAULT_N_DADEUDOS))
             .andExpect(jsonPath("$.nAnobase").value(DEFAULT_N_ANOBASE))
@@ -421,6 +444,9 @@ public class CalperiodoResourceIntTest {
             .tFecini(UPDATED_T_FECINI)
             .tFecfin(UPDATED_T_FECFIN)
             .nTnocomput(UPDATED_N_TNOCOMPUT)
+            .nTcomput(UPDATED_N_TCOMPUT)
+            .nCodhijo1(UPDATED_N_CODHIJO_1)
+            .nCodhijo2(UPDATED_N_CODHIJO_2)
             .nDgozados(UPDATED_N_DGOZADOS)
             .nDadeudos(UPDATED_N_DADEUDOS)
             .nAnobase(UPDATED_N_ANOBASE)
@@ -447,6 +473,9 @@ public class CalperiodoResourceIntTest {
         assertThat(testCalperiodo.gettFecini()).isEqualTo(UPDATED_T_FECINI);
         assertThat(testCalperiodo.gettFecfin()).isEqualTo(UPDATED_T_FECFIN);
         assertThat(testCalperiodo.getnTnocomput()).isEqualTo(UPDATED_N_TNOCOMPUT);
+        assertThat(testCalperiodo.getnTcomput()).isEqualTo(UPDATED_N_TCOMPUT);
+        assertThat(testCalperiodo.getnCodhijo1()).isEqualTo(UPDATED_N_CODHIJO_1);
+        assertThat(testCalperiodo.getnCodhijo2()).isEqualTo(UPDATED_N_CODHIJO_2);
         assertThat(testCalperiodo.getnDgozados()).isEqualTo(UPDATED_N_DGOZADOS);
         assertThat(testCalperiodo.getnDadeudos()).isEqualTo(UPDATED_N_DADEUDOS);
         assertThat(testCalperiodo.getnAnobase()).isEqualTo(UPDATED_N_ANOBASE);
@@ -521,6 +550,9 @@ public class CalperiodoResourceIntTest {
             .andExpect(jsonPath("$.[*].tFecini").value(hasItem(DEFAULT_T_FECINI.toString())))
             .andExpect(jsonPath("$.[*].tFecfin").value(hasItem(DEFAULT_T_FECFIN.toString())))
             .andExpect(jsonPath("$.[*].nTnocomput").value(hasItem(DEFAULT_N_TNOCOMPUT)))
+            .andExpect(jsonPath("$.[*].nTcomput").value(hasItem(DEFAULT_N_TCOMPUT)))
+            .andExpect(jsonPath("$.[*].nCodhijo1").value(hasItem(DEFAULT_N_CODHIJO_1.intValue())))
+            .andExpect(jsonPath("$.[*].nCodhijo2").value(hasItem(DEFAULT_N_CODHIJO_2.intValue())))
             .andExpect(jsonPath("$.[*].nDgozados").value(hasItem(DEFAULT_N_DGOZADOS)))
             .andExpect(jsonPath("$.[*].nDadeudos").value(hasItem(DEFAULT_N_DADEUDOS)))
             .andExpect(jsonPath("$.[*].nAnobase").value(hasItem(DEFAULT_N_ANOBASE)))

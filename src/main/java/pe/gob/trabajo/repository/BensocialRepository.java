@@ -17,4 +17,7 @@ public interface BensocialRepository extends JpaRepository<Bensocial, Long> {
     @Query("select bensocial from Bensocial bensocial where bensocial.nFlgactivo = true")
     List<Bensocial> findAll_Activos();
 
+    @Query("select bensocial from Bensocial bensocial where bensocial.vBensocial=?1 and bensocial.nFlgactivo = true")
+    Bensocial find_Bensocial_ByNombre(String nombensocial);
+
 }

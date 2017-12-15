@@ -126,27 +126,29 @@ public class DocpresateResource {
     }
 
      /** JH
-     * GET  /docpresates/atencion/id/:id_aten :
+     * GET  /docpresates/atencion/id/:id_aten/id_oficina/:id_ofic :
      * @param id_aten es el id de la atencion
+     * id_ofic
      * @return the ResponseEntity with status 200 (OK) and with body the Docpresate, or with status 404 (Not Found)
      */
-	@GetMapping("/docpresates/atencion/id/{id_aten}")
+	@GetMapping("/docpresates/atencion/id/{id_aten}/id_oficina/{id_ofic}")
     @Timed
-    public List<Docpresate> getListDocpresentaByIdAtencion(@PathVariable Long id_aten) {
-        log.debug("REST request to get Docpresate : id_aten {}", id_aten);
-        return docpresateRepository.findListDocPresentaById_Atencion(id_aten);
+    public List<Docpresate> getListDocpresentaByIdAtencion(@PathVariable Long id_aten,@PathVariable Long id_ofic) {
+        log.debug("REST request to get Docpresate : id_aten {}", id_aten,id_ofic);
+        return docpresateRepository.findListDocPresentaById_Atencion(id_aten,id_ofic);
     }
 
      /** JH
-     * GET  /docpresates/atencion/id_aten/:id_aten
+     * GET  /docpresates/atencion/id_aten/:id_aten/id_oficina/:id_ofic
      * @param id_aten es el id de la atencion
+     * id_ofic
      * @return the ResponseEntity with status 200 (OK) and with body the docpresates, or with status 404 (Not Found)
      */
-	@GetMapping("/docpresates/seleccion/atencion/id_aten/{id_aten}")
+	@GetMapping("/docpresates/seleccion/atencion/id_aten/{id_aten}/id_oficina/{id_ofic}")
     @Timed
-    public List<Docpresate> getListDocumento_ySeleccionadosByIdAtencion(@PathVariable Long id_aten) {
-        log.debug("REST request to get Atenaccadop : id_aten {} ", id_aten);
-        return docpresateRepository.findListDocumento_ySeleccionadosByIdAtencion(id_aten);
+    public List<Docpresate> getListDocumento_ySeleccionadosByIdAtencion(@PathVariable Long id_aten,@PathVariable Long id_ofic) {
+        log.debug("REST request to get Atenaccadop : id_aten {} id_ofic {}", id_aten,id_ofic);
+        return docpresateRepository.findListDocumento_ySeleccionadosByIdAtencion(id_aten,id_ofic);
     }
 
     /**

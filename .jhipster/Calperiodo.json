@@ -67,6 +67,21 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "nTcomput",
+            "javadoc": "TIEMPO COMPUTABLE DEL PERIODO DEL BENEFICIO ACTUAL",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "nCodhijo1",
+            "javadoc": "CODIGO DEL PERIODO HIJO1 DE UN BENEFICIO SOCIAL DEL PERIODO Y BENEFICIO ACTUAL",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nCodhijo2",
+            "javadoc": "CODIGO DEL PERIODO HIJO2 DE UN BENEFICIO SOCIAL DEL PERIODO Y BENEFICIO ACTUAL",
+            "fieldType": "Long"
+        },
+        {
             "fieldName": "nDgozados",
             "javadoc": "EN CASO SE TRATASE DE VACACIONES - NUMERO DE DIAS GOZADOS EN EL PERIODO",
             "fieldType": "Integer"

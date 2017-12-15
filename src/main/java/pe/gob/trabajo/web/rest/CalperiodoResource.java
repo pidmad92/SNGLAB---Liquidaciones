@@ -5,6 +5,7 @@ import pe.gob.trabajo.domain.Calperiodo;
 
 import pe.gob.trabajo.repository.CalperiodoRepository;
 import pe.gob.trabajo.repository.search.CalperiodoSearchRepository;
+import pe.gob.trabajo.web.rest.errors.BadRequestAlertException;
 import pe.gob.trabajo.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -123,10 +124,10 @@ public class CalperiodoResource {
     public List<Calperiodo> getAll_Activos() {
         log.debug("REST request to get all calperiodos");
         return calperiodoRepository.findAll_Activos();
-        }
+    }
 
     /** JH
-     * GET  /calperiodos/id_atencion/{id_aten}/id_bensocial/{id_bsoc} : get all the calperiodos.
+     * GET  /calperiodos/id_atencion/:id_aten/id_bensocial/:id_bsoc : get all the calperiodos.
      * @param id_aten es el id de la Atencion
      * @param id_bsoc es el id del Bensocial
      * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
@@ -139,7 +140,7 @@ public class CalperiodoResource {
     }
 
     /** JH
-     * GET  /calperiodos/depositos/intereses/id_atencion/{id_aten}/id_bensocial/{id_bsoc} .
+     * GET  /calperiodos/depositos/intereses/id_atencion/:id_aten/id_bensocial/:id_bsoc .
      * @param id_aten es el id de la Atencion
      * @param id_bsoc es el id del Bensocial
      * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
@@ -149,6 +150,30 @@ public class CalperiodoResource {
     public List<Calperiodo> getTotalDeposito_Interes_By_IdAtencion_IdBiensocial(@PathVariable Long id_aten, @PathVariable Long id_bsoc) {
         log.debug("REST request to get all calperiodos: id_aten {}, id_bsoc {}",id_aten,id_bsoc);
         return calperiodoRepository.findTotalDeposito_Interes_By_IdAtencion_IdBiensocial(id_aten, id_bsoc);
+    }
+
+    /** JH
+     * GET  /calperiodos/RCM_Deposito_Interes/id_calperiodo/:id_calper : get gratificaciones delperiodo.
+     * @param id_calper es el id del Calperiodo
+     * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
+     */
+    @GetMapping("/calperiodos/RCM_Deposito_Interes/id_calperiodo/{id_calper}")
+    @Timed
+    public List<Calperiodo> get_RCM_Deposito_Interes_ByIdCalperiodo(@PathVariable Long id_calper) {
+        log.debug("REST request to get all calperiodos: id_calper {}",id_calper);
+        return calperiodoRepository.find_RCM_Deposito_Interes_ByIdCalperiodo(id_calper);
+    }
+
+    /** JH
+     * GET  /calperiodos/gratiperiodo/id_calper/:id_calper : get gratificaciones delperiodo.
+     * @param id_calper es el id del Calperiodo
+     * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
+     */
+    @GetMapping("/calperiodos/gratiboniperiodo/id_calperiodo/{id_calper}")
+    @Timed
+    public List<Calperiodo> get_Grati_Bonifi_ByIdCalperiodo(@PathVariable Long id_calper) {
+        log.debug("REST request to get all calperiodos: id_calper {}",id_calper);
+        return calperiodoRepository.find_Grati_Bonifi_ByIdCalperiodo(id_calper);
     }
 
     /**

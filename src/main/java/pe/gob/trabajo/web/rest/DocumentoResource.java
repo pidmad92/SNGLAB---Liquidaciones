@@ -125,6 +125,18 @@ public class DocumentoResource {
         return documentoRepository.findAll_Activos();
     }
 
+    /** JH
+     * GET  /documentos/id_oficina/{id_ofic} : get all the documentos de una Oficina.
+     * @param id_ofic the id de la Oficina
+     * @return the ResponseEntity with status 200 (OK) and the list of documentos in body
+     */
+    @GetMapping("/documentos/id_oficina/{id_ofic}")
+    @Timed
+    public List<Documento> getDocumentos_ByIdOficina(@PathVariable Long id_ofic) {
+        log.debug("REST request to get all documentos : id_ofic {}",id_ofic);
+        return documentoRepository.findDocumentos_ByIdOficina(id_ofic);
+    }
+
     /**
      * DELETE  /documentos/:id : delete the "id" documento.
      *

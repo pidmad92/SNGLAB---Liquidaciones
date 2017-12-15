@@ -104,6 +104,10 @@ public class Documento implements Serializable {
     @JoinColumn(name = "n_codtipdoc")
     private Tipdoc tipdoc;
 
+    @ManyToOne
+    @JoinColumn(name = "n_codofic")
+    private Oficina oficina;
+
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -253,6 +257,19 @@ public class Documento implements Serializable {
 
     public void setTipdoc(Tipdoc tipdoc) {
         this.tipdoc = tipdoc;
+    }
+
+    public Oficina getOficina() {
+        return oficina;
+    }
+
+    public Documento oficina(Oficina oficina) {
+        this.oficina = oficina;
+        return this;
+    }
+
+    public void setOficina(Oficina oficina) {
+        this.oficina = oficina;
     }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 

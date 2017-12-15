@@ -151,6 +151,19 @@ public class ConcepremResource {
         return concepremRepository.findListConcepremHijo_ByIdPadreIdTipo(id_concep, id_tipccr);
     }
 
+    /** JH
+     * GET /conceprems/id_atencion/:id_aten/id_bensocial/:id_bensoc : get all the conceprems.
+     * @param id_aten es el id de Atencion
+     * @param id_bensoc es el id de Bensoc
+     * @return the ResponseEntity with status 200 (OK) and the list of conceprems in body
+     */
+    @GetMapping("/conceprems/id_atencion/{id_aten}/id_bensocial/{id_bensoc}")
+    @Timed
+    public List<Conceprem> getListConceprem_ByIdAtencionIdBensocial(@PathVariable Long id_aten, @PathVariable Long id_bensoc) {
+        log.debug("REST request to get all conceprems: id_aten {}, id_bensoc {}",id_aten,id_bensoc);
+        return concepremRepository.findListConceprem_ByIdAtencionIdBensocial(id_aten, id_bensoc);
+    }
+
     /**
      * DELETE  /conceprems/:id : delete the "id" conceprem.
      *

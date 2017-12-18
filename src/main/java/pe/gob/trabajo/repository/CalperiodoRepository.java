@@ -18,7 +18,33 @@ public interface CalperiodoRepository extends JpaRepository<Calperiodo, Long> {
         @Query("select calperiodo from Calperiodo calperiodo where calperiodo.nFlgactivo = true")
         List<Calperiodo> findAll_Activos();
     
-        @Query("select calperiodo " + 
+        // @Query("select calperiodo " + 
+        @Query("select new map( " + 
+                        " calperiodo.id as Calperiodo_id " +
+                        " , calperiodo.nCalper as Calperiodo_nCalper " +
+                        " , calperiodo.nCalper2 as Calperiodo_nCalper2 " +
+                        " , calperiodo.nNumper as Calperiodo_nNumper " +
+                        " , calperiodo.tFecini as Calperiodo_tFecini " +
+                        " , calperiodo.tFecfin as Calperiodo_tFecfin " +
+                        " , calperiodo.nTcomput as Calperiodo_nTcomput " +
+                        " , calperiodo.nTnocomput as Calperiodo_nTnocomput " +
+                        " , calperiodo.nDgozados as Calperiodo_nDgozados " +
+                        " , calperiodo.nDadeudos as Calperiodo_nDadeudos " +
+                        " , calperiodo.nAnobase as Calperiodo_nAnobase " +
+                        " , calperiodo.calbensoc.id as CalperiodoCalbensoc_id " +
+                        " , calperiodo.calbensoc.nCalbens as CalperiodoCalbensoc_nCalbens " +
+                        " , calperiodo.calbensoc.nCalbens2 as CalperiodoCalbensoc_nCalbens2 " +
+                        " , calperiodo.calbensoc.bensocial.id as CalperiodoCalbensocBensocial_id " +
+                        " , calperiodo.calbensoc.bensocial.vBensocial as CalperiodoCalbensocBensocial_vBensocial " +
+                        " , calperiodo.calbensoc.liquidacion.id as CalperiodoCalbensocLiquidacion_id " +
+                        " , calperiodo.calbensoc.liquidacion.nLiquid as CalperiodoCalbensocLiquidacion_nLiquid " +
+                        " , calperiodo.segsalud.id as CalperiodoSegsalud_id " +
+                        " , calperiodo.segsalud.vSegsal as CalperiodoSegsalud_vSegsal " +
+                        " , calperiodo.estperical.id as CalperiodoEstperical_id " +
+                        " , calperiodo.estperical.vNomestper as CalperiodoEstperical_vNomestper " +
+                        " , calperiodo.tipcalperi.id as CalperiodoTipcalperi_id " +
+                        " , calperiodo.tipcalperi.vNomtipcal as CalperiodoTipcalperi_vNomtipcal " +
+                        " ) " + 
                 " from Calbensoc calbensoc inner join Atencion atencion on atencion.liquidacion.id=calbensoc.liquidacion.id " + 
                         " inner join Calperiodo calperiodo on calperiodo.calbensoc.id=calbensoc.id" + 
                 " where atencion.id=?1 and calbensoc.bensocial.id=?2 " + 
@@ -54,18 +80,19 @@ public interface CalperiodoRepository extends JpaRepository<Calperiodo, Long> {
                         ")" +
                 " from Calperiodo calperiodo, Interesperi interesperi, Calrcmperi calrcmperi " + 
                 " where calperiodo.nFlgactivo = true and " + 
-                " interesperi.nFlgactivo = true and " +
-                " calrcmperi.nFlgactivo = true and " +
-                " interesperi.calperiodo.id=?1 and " +
-                " calrcmperi.calperiodo.id=?1 and " +
-                " calperiodo.id=?1 "
+                        " interesperi.nFlgactivo = true and " +
+                        " calrcmperi.nFlgactivo = true and " +
+                        " interesperi.calperiodo.id=?1 and " +
+                        " calrcmperi.calperiodo.id=?1 and " +
+                        " calperiodo.calbensoc.bensocial.id=?2 and " +
+                        " calperiodo.id=?1 "
                 )
-        List<Calperiodo> find_RCM_Deposito_Interes_ByIdCalperiodo(Long id_calper);
+        List<Calperiodo> find_RCM_Deposito_Interes_ByIdCalperiodo(Long id_calper, Long id_bsoc);
 
         @Query("select new map(sum(calperiodo.nCalper) as gratiperi, sum(calperiodo.nCalper2) as boniperi ) " +
                 " from Calperiodo calperiodo " + 
                 " where calperiodo.nFlgactivo = true and " + 
-                " (calperiodo.id,calperiodo.id) in (select calperi.nCodhijo1, calperi.nCodhijo2 from Calperiodo calperi where calperi.id=?1 and calperi.nFlgactivo = true) ")
-        List<Calperiodo> find_Grati_Bonifi_ByIdCalperiodo(Long id_calper);
+                        " (calperiodo.id,calperiodo.id) in (select calperi.nCodhijo1, calperi.nCodhijo2 from Calperiodo calperi where calperi.id=?1 and calperi.calbensoc.bensocial.id=?2 and calperi.nFlgactivo = true) ")
+        List<Calperiodo> find_Grati_Bonifi_ByIdCalperiodo(Long id_calper, Long id_bsoc);
         
 }

@@ -153,27 +153,29 @@ public class CalperiodoResource {
     }
 
     /** JH
-     * GET  /calperiodos/RCM_Deposito_Interes/id_calperiodo/:id_calper : get gratificaciones delperiodo.
+     * GET  /calperiodos/RCM_Deposito_Interes/id_calperiodo/:id_calper/id_bensocial/:id_bsoc : get gratificaciones del periodo.
      * @param id_calper es el id del Calperiodo
+     * @param id_bsoc es el id del Bensocial
      * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
      */
-    @GetMapping("/calperiodos/RCM_Deposito_Interes/id_calperiodo/{id_calper}")
+    @GetMapping("/calperiodos/RCM_Deposito_Interes/id_calperiodo/{id_calper}/id_bensocial/{id_bsoc}")
     @Timed
-    public List<Calperiodo> get_RCM_Deposito_Interes_ByIdCalperiodo(@PathVariable Long id_calper) {
-        log.debug("REST request to get all calperiodos: id_calper {}",id_calper);
-        return calperiodoRepository.find_RCM_Deposito_Interes_ByIdCalperiodo(id_calper);
+    public List<Calperiodo> get_RCM_Deposito_Interes_ByIdCalperiodo(@PathVariable Long id_calper, @PathVariable Long id_bsoc) {
+        log.debug("REST request to get all calperiodos: id_calper {}, id_bsoc {}",id_calper,id_bsoc);
+        return calperiodoRepository.find_RCM_Deposito_Interes_ByIdCalperiodo(id_calper,id_bsoc);
     }
 
     /** JH
-     * GET  /calperiodos/gratiperiodo/id_calper/:id_calper : get gratificaciones delperiodo.
+     * GET  /calperiodos/gratiperiodo/id_calper/:id_calper/id_bensocial/:id_bsoc : get gratificaciones delperiodo.
      * @param id_calper es el id del Calperiodo
+     * @param id_bsoc es el id del Bensocial
      * @return the ResponseEntity with status 200 (OK) and the list of calperiodos in body
      */
-    @GetMapping("/calperiodos/gratiboniperiodo/id_calperiodo/{id_calper}")
+    @GetMapping("/calperiodos/gratiboniperiodo/id_calperiodo/{id_calper}/id_bensocial/{id_bsoc}")
     @Timed
-    public List<Calperiodo> get_Grati_Bonifi_ByIdCalperiodo(@PathVariable Long id_calper) {
-        log.debug("REST request to get all calperiodos: id_calper {}",id_calper);
-        return calperiodoRepository.find_Grati_Bonifi_ByIdCalperiodo(id_calper);
+    public List<Calperiodo> get_Grati_Bonifi_ByIdCalperiodo(@PathVariable Long id_calper, @PathVariable Long id_bsoc) {
+        log.debug("REST request to get all calperiodos: id_calper {}, id_bsoc {}",id_calper,id_bsoc);
+        return calperiodoRepository.find_Grati_Bonifi_ByIdCalperiodo(id_calper,id_bsoc);
     }
 
     /**

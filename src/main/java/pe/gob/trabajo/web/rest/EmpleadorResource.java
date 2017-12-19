@@ -150,7 +150,7 @@ public class EmpleadorResource {
         log.debug("REST request to get empleador : tipdoc {} - numdoc {}", id_tdoc, ndoc);
         Empleador empleador = new Empleador();
         empleador = empleadorRepository.findEmpleadorPerJuridByIdentDoc(id_tdoc,ndoc);
-        if (empleador.equals(null)){
+        if (empleador==null){
             empleador = empleadorRepository.findEmpleadorPerNaturalByIdentDoc(id_tdoc,ndoc);
         }
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(empleador));

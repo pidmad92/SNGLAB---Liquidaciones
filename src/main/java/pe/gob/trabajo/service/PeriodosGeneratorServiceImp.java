@@ -9,6 +9,9 @@ public class PeriodosGeneratorServiceImp implements PeriodosGeneratorService{
 
     @Override
     public ArrayList<Calperiodo> getListaPeriodosCts(Datlab datosLaborales) {
+        PeriodosCtsGeneratorService periodosCtsGeneratorService = null;
+        ArrayList<Calperiodo> listaCalperiodo = periodosCtsGeneratorService.getListPerCtsAnualObreroT1(new ArrayList<Calperiodo>() , datosLaborales);
+
         return null;
     }
 

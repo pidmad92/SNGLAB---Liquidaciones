@@ -116,7 +116,7 @@ public class Conceprem implements Serializable {
 
     // @ManyToOne
     // private Conceprem conceprem;
-
+    
     @ManyToOne(cascade={CascadeType.ALL})
 	@JoinColumn(name="n_codcrsup", insertable = false, updatable = false)
 	private Conceprem concepsup;
@@ -303,6 +303,19 @@ public class Conceprem implements Serializable {
     public void setConcepsupId(Long nCodcrsup) {
         this.nCodcrsup = nCodcrsup;
     }
+
+    // public Conceprem getConceprem() {
+    //     return conceprem;
+    // }
+
+    // public Conceprem conceprem(Conceprem conceprem) {
+    //     this.conceprem = conceprem;
+    //     return this;
+    // }
+
+    // public void setConceprem(Conceprem conceprem) {
+    //     this.conceprem = conceprem;
+    // }
 
     // public Set<Conceprem> getConceprems() {
     //     return conceprems;

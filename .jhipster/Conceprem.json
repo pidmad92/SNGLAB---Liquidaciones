@@ -11,7 +11,7 @@
             "relationshipName": "conceprem",
             "otherEntityName": "conceprem",
             "relationshipType": "many-to-one",
-            "otherEntityField": "nCodcrsup"
+            "otherEntityField": "id"
         },
         {
             "relationshipType": "one-to-many",

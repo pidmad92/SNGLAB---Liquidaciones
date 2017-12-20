@@ -56,6 +56,7 @@ public class ConcepremResource {
     public ResponseEntity<Conceprem> createConceprem(@Valid @RequestBody Conceprem conceprem) throws URISyntaxException {
         log.debug("REST request to save Conceprem : {}", conceprem);
         if (conceprem.getId() != null) {
+            // throw new BadRequestAlertException("A new conceprem cannot already have an ID", ENTITY_NAME, "idexists");
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new conceprem cannot already have an ID")).body(null);
         }
         Conceprem result = concepremRepository.save(conceprem);

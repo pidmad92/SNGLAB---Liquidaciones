@@ -9,10 +9,26 @@ public class PeriodosGeneratorServiceImp implements PeriodosGeneratorService{
 
     @Override
     public ArrayList<Calperiodo> getListaPeriodosCts(Datlab datosLaborales) {
-        PeriodosCtsGeneratorService periodosCtsGeneratorService = null;
-        ArrayList<Calperiodo> listaCalperiodo = periodosCtsGeneratorService.getListPerCtsAnualObreroT1(new ArrayList<Calperiodo>() , datosLaborales);
+    	
+    	ArrayList<Calperiodo> listaCalperiodo = new ArrayList<>();
+    	PeriodosCtsGeneratorService periodosCtsGeneratorService = new PeriodosCtsGeneratorServiceImp();
+    	
+    	
+    	//Valida Vinculo Laboral
+    	switch (datosLaborales.getTipvinculo().getId().intValue()) {
+		case 1:
+			listaCalperiodo = periodosCtsGeneratorService.getListPerCtsAnualObrero(new ArrayList<Calperiodo>() , datosLaborales);
+			break;
+		
+		case 2:
+			listaCalperiodo = periodosCtsGeneratorService.getListPerCtsAnualEmpleado(new ArrayList<Calperiodo>() , datosLaborales);
+			break;
 
-        return null;
+		default:
+			break;
+		}
+
+        return listaCalperiodo;
     }
 
     @Override

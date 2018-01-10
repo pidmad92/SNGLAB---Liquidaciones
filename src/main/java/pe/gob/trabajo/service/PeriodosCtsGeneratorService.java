@@ -10,11 +10,11 @@ public interface PeriodosCtsGeneratorService extends Serializable {
 
     /*  Para el calculo de la Cts   */
 
-    public ArrayList<Calperiodo> getListPerCtsAnualObreroT1(ArrayList<Calperiodo> listaPeriodos, Datlab datosLaborales);
+    public ArrayList<Calperiodo> getListPerCtsAnualObrero(ArrayList<Calperiodo> listaPeriodos, Datlab datosLaborales);
 
     public ArrayList<Calperiodo> getListPerCtsAnualObreroT2(ArrayList<Calperiodo> listaPeriodos, Datlab datosLaborales);
 
-    public ArrayList<Calperiodo> getListPerCtsAnualEmpleadoT1(ArrayList<Calperiodo> listaPeriodos, Datlab datosLaborales);
+    public ArrayList<Calperiodo> getListPerCtsAnualEmpleado(ArrayList<Calperiodo> listaPeriodos, Datlab datosLaborales);
 
     public ArrayList<Calperiodo> getListPerCtsAnualEmpleadoT2ST1(ArrayList<Calperiodo> listaPeriodos, Datlab datosLaborales);
 

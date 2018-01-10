@@ -1,10 +1,18 @@
 package pe.gob.trabajo.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import pe.gob.trabajo.domain.Accadoate;
 
+import pe.gob.trabajo.domain.Accadoate;
+import pe.gob.trabajo.domain.Calperiodo;
+import pe.gob.trabajo.domain.Datlab;
+import pe.gob.trabajo.domain.Empleador;
+import pe.gob.trabajo.domain.Perjuridica;
+import pe.gob.trabajo.domain.Pernatural;
+import pe.gob.trabajo.domain.Trabajador;
 import pe.gob.trabajo.repository.AccadoateRepository;
 import pe.gob.trabajo.repository.search.AccadoateSearchRepository;
+import pe.gob.trabajo.service.PeriodosGeneratorService;
+import pe.gob.trabajo.service.PeriodosGeneratorServiceImp;
 import pe.gob.trabajo.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -15,7 +23,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -178,6 +188,46 @@ public class AccadoateResource {
         return StreamSupport
             .stream(accadoateSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
+    }
+    
+    @GetMapping("/pruebadata")
+    @Timed
+    public List<Accadoate> pruebadata() {
+    			List<Accadoate> lista = new ArrayList<>();
+    			Empleador empleador = new Empleador();
+    			Perjuridica perjuridica = new Perjuridica();
+    			perjuridica.setvNumdoc("1070413933");
+    			perjuridica.setvRazsocial("PIDMAD - Servicios Mecatronicos");
+    			empleador.setPerjuridica(perjuridica);
+    			
+    	        Trabajador trabajador = new Trabajador();//""," Maldonado Diaz");
+    	        Pernatural pernatural = new Pernatural();
+    	        pernatural.setvNumdoc("704139336");
+    	        pernatural.setvNombres("Pierre David");
+    	        trabajador.setPernatural(pernatural);
+    	        
+    	        Datlab datosLaborales = new Datlab();//(empleador, trabajador, ,"Empleado","General", );
+    	        datosLaborales.setTrabajador(trabajador);
+    	        datosLaborales.setEmpleador(empleador);
+    	        datosLaborales.setdFecvincul(LocalDate.parse("1978-02-05"));
+    	        datosLaborales.setdFeccese(LocalDate.parse("2016-12-12"));
+    	        
+    	        ArrayList<String> listaBeneficios = new ArrayList<>();
+    	        listaBeneficios.add("CTS");
+
+    	        PeriodosGeneratorService periodosGeneratorService = new PeriodosGeneratorServiceImp() ;//(datosLaborales,listaBeneficios);
+    	        
+    	        ArrayList<Calperiodo> listaPeriodo = periodosGeneratorService.getListaPeriodosCts(datosLaborales);
+    	        
+    	        listaPeriodo.stream().forEach((periodo)->{
+    	        	Period tiempoComputable = (periodo.gettFecini().until(periodo.gettFecfin().plusDays(1)));//perCmptble
+    	        	System.out.println("\t\t\tPeriodo NÂ°" + periodo.getnNumper() + " \t(" + periodo.gettFecini() + " - " + periodo.gettFecfin() + ")" + "\tTmpo. Computable: " + tiempoComputable.getYears() + " aÃ±os " + tiempoComputable.getMonths() + " meses " + tiempoComputable.getDays() + " dias");
+    	        });
+    	        
+    	        
+    	        
+    	        
+    	        return lista;
     }
 
 }
